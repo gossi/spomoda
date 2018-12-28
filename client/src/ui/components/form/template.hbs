@@ -1,0 +1,7 @@
+<form onsubmit={{bind this.submit}} ...attributes>
+	{{yield (hash
+		model=this.model
+		rollback=this.rollback
+		errors=this.errors
+	)}}
+</form>

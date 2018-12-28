@@ -1,0 +1,12 @@
+<header local-class="appbar">
+	<div local-class="content">
+		{{#link-to 'index' class=(local-class "brand")}}Spomoda{{/link-to}}
+
+		<nav>
+			{{#link-to 'suggest'}}Suggest{{/link-to}}
+			{{#link-to 'review'}}Review{{/link-to}}
+		</nav>
+	</div>
+</header>
+
+{{outlet}}

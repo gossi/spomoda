@@ -1,0 +1,41 @@
+<ModelForm local-class="sport-form" @model={{@sport}} @task={{@task}} as |form|>
+	<fieldset>
+		<legend>{{t 'sport.form.general'}}</legend>
+
+		<p>{{t 'sport.form.general.description'}}</p>
+
+		<form.input
+			@name='title'
+			@label={{t 'title'}} />
+
+		<form.input
+			@name='sortTitle'
+			@label={{t 'sport.form.sortTitle'}}
+			@placeholder={{t 'sport.form.sortTitle.placeholder'}} />
+
+	</fieldset>
+
+
+	<fieldset>
+		<legend>{{t 'sport.form.language'}}</legend>
+
+		<p>{{t 'sport.form.language.description'}}</p>
+
+		<form.input
+			@name='athleteLabel'
+			@label={{t 'athlete'}}
+			@description={{t 'sport.form.athlete.description'}} />
+
+		<form.input
+			@name='skillLabel'
+			@label={{t 'sport.form.skill'}}
+			@description={{t 'sport.form.skill.description'}} />
+
+		<form.input
+			@name='skillPluralLabel'
+			@label={{t 'sport.form.skill-plural'}} />
+	</fieldset>
+
+	<Button onclick={{bind form.rollback}} disabled={{not form.model.isDirty}}>Reset</Button>
+	<Button type="submit" disabled={{or @task.isRunning (not form.model.isDirty)}}>Suggest</Button>
+</ModelForm>

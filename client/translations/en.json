@@ -1,0 +1,22 @@
+{
+	"title": "Title",
+	"athlete": "Athlete",
+	"skill": "Skill",
+
+	"sport.form": {
+		"general": "General",
+		"general.description": "Overall information",
+		"sortTitle": "Sort Title",
+		"sortTitle.placeholder": "Leave empty for autofill",
+		"athlete.description": "How do athletes call themselves",
+		"skill": "Skill Label",
+		"skill.description": "How are skills called",
+		"skill-plural": "Skill Plural Label",
+		"language": "Language",
+		"language.description": "To stay within the language of the sport"
+	},
+
+	"errors": {
+		"required": "{field} is required"
+	}
+}

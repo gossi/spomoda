@@ -1,0 +1,5 @@
+<ul>
+{{#each model as |sport|}}
+	<li>{{sport.title}} <Button onclick={{perform this.approve sport.id}}>Approve</Button> <Button onclick={{perform this.reject sport.id}}>Reject</Button></li>
+{{/each}}
+</ul>

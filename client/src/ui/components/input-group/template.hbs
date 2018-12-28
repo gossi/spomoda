@@ -1,0 +1,22 @@
+<div local-class="input-group" ...attributes>
+	{{#if @label}}
+		<label local-class="label" for={{this.id}}>{{@label}}</label>
+	{{/if}}
+
+	{{#if @description}}
+		<label local-class="description" for={{this.id}}>{{@description}}</label>
+	{{/if}}
+
+	<Input
+		@id={{this.id}}
+		@type={{this.type}}
+		@value={{@value}}
+		@placeholder={{@placeholder}}
+		@changed={{action (optional @changed)}}
+		local-class="input"
+		/>
+
+	{{#if @error}}
+		<small local-class="error">{{@error}}</small>
+	{{/if}}
+</div>

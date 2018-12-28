@@ -1,0 +1,45 @@
+{
+	"compilerOptions": {
+		"target": "es2017",
+		"allowJs": true,
+		"moduleResolution": "node",
+		"isolatedModules": true,
+		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noEmitOnError": false,
+		"noEmit": true,
+		"inlineSourceMap": true,
+		"inlineSources": true,
+		"baseUrl": ".",
+		"module": "es6",
+		"paths": {
+			"@spomoda/client/tests/*": [
+				"tests/*"
+			],
+			"@spomoda/client/src/*": [
+				"src/*"
+			],
+			"sparkles-component/*": [
+				"node_modules/sparkles-component/addon/*"
+			],
+			"*": [
+				"types/*"
+			],
+		}
+	},
+	"include": [
+		"src/**/*",
+		"tests/**/*",
+		"types/**/*",
+		"node_modules/sparkles-component/addon/**/*"
+	]
+}
