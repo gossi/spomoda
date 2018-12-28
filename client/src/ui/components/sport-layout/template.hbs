@@ -1,9 +1,9 @@
 <Layout as |layout|>
 	<layout.header local-class="header">
-		<h1>{{@sport.title}}</h1>
+		{{#link-to 'sport' @sport.slug tagName='h1'}}{{@sport.title}}{{/link-to}}
 
 		<nav>
-			Add Skill
+			{{#link-to 'sport.manage' @sport.slug}}manage{{/link-to}}
 			Add Group
 		</nav>
 	</layout.header>

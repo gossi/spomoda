@@ -5,18 +5,31 @@ const slugify = require('slugify');
 const initialState = {
 	title: '',
 	sortTitle: '',
+
+	slug: '',
+
 	athleteLabel: '',
-	objectLabel: '',
-	objectPluralLabel: '',
+
 	skillLabel: '',
 	skillPluralLabel: '',
+
 	groupLabel: '',
 	groupPluralLabel: '',
+
+	objectLabel: '',
+	objectPluralLabel: '',
+
+	positionLabel: '',
+	positionPluralLabel: '',
+
 	transitionLabel: '',
 	transitionPluralLabel: '',
-	positionLabel: '',
+
+	featureObjects: false,
 	featureComposition: false,
+
 	approved: false,
+
 	isAuthorized: {
 		commands: {
 			suggest: {
@@ -59,6 +72,34 @@ function validate(data) {
 
 	if (!data.skillPluralLabel) {
 		errors.skillPluralLabel = 'required';
+	}
+
+	if (data.featureObjects) {
+		if (!data.objectLabel) {
+			errors.objectLabel = 'required';
+		}
+
+		if (!data.objectPluralLabel) {
+			errors.objectPluralLabel = 'required';
+		}
+	}
+
+	if (data.featureComposition) {
+		if (!data.transitionLabel) {
+			errors.transitionLabel = 'required';
+		}
+
+		if (!data.transitionPluralLabel) {
+			errors.transitionPluralLabel = 'required';
+		}
+
+		if (!data.positionLabel) {
+			errors.positionLabel = 'required';
+		}
+
+		if (!data.positionPluralLabel) {
+			errors.positionPluralLabel = 'required';
+		}
 	}
 
 	return errors;

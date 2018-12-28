@@ -13,6 +13,13 @@
 			@label={{t 'sport.form.sortTitle'}}
 			@placeholder={{t 'sport.form.sortTitle.placeholder'}} />
 
+		<CheckboxGroup
+			@label='Features'
+			as |group|>
+
+			<group.checkbox @value={{form.model.featureObjects}} @changed={{action (mut form.model.featuredObject)}} @label="Objects?"/>
+		</CheckboxGroup>
+
 	</fieldset>
 
 

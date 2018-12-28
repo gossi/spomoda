@@ -13,12 +13,6 @@ const fields = {
 	athleteLabel: {
 		initialState: ''
 	},
-	objectLabel: {
-		initialState: ''
-	},
-	objectPluralLabel: {
-		initialState: ''
-	},
 	skillLabel: {
 		initialState: ''
 	},
@@ -31,14 +25,26 @@ const fields = {
 	groupPluralLabel: {
 		initialState: ''
 	},
+	objectLabel: {
+		initialState: ''
+	},
+	objectPluralLabel: {
+		initialState: ''
+	},
+	positionLabel: {
+		initialState: ''
+	},
+	positionPluralLabel: {
+		initialState: ''
+	},
 	transitionLabel: {
 		initialState: ''
 	},
 	transitionPluralLabel: {
 		initialState: ''
 	},
-	positionLabel: {
-		initialState: ''
+	featureObjects: {
+		initialState: false
 	},
 	featureComposition: {
 		initialState: false
@@ -51,18 +57,22 @@ const fields = {
 const projections = {
 	'management.sport.suggested'(sports, event) {
 		sports.add({
+			// ...event.data
 			title: event.data.title,
+			sortTitle: event.data.sortTitle,
 			slug: event.data.slug,
 			athleteLabel: event.data.athleteLabel,
-			objectLabel: event.data.objectLabel,
-			objectPluralLabel: event.data.objectPluralLabel,
 			skillLabel: event.data.skillLabel,
 			skillPluralLabel: event.data.skillPluralLabel,
 			groupLabel: event.data.groupLabel,
 			groupPluralLabel: event.data.groupPluralLabel,
+			objectLabel: event.data.objectLabel,
+			objectPluralLabel: event.data.objectPluralLabel,
+			positionLabel: event.data.positionLabel,
+			positionPluralLabel: event.data.positionPluralLabel,
 			transitionLabel: event.data.transitionLabel,
 			transitionPluralLabel: event.data.transitionPluralLabel,
-			positionLabel: event.data.positionLabel,
+			featureObjects: event.data.featureObjects,
 			featureComposition: event.data.featureComposition
 		});
 	},
@@ -87,17 +97,22 @@ const projections = {
 				id: event.aggregate.id
 			},
 			set: {
+				// ...event.data
 				title: event.data.title,
+				sortTitle: event.data.sortTitle,
+				slug: event.data.slug,
 				athleteLabel: event.data.athleteLabel,
-				objectLabel: event.data.objectLabel,
-				objectPluralLabel: event.data.objectPluralLabel,
 				skillLabel: event.data.skillLabel,
 				skillPluralLabel: event.data.skillPluralLabel,
 				groupLabel: event.data.groupLabel,
 				groupPluralLabel: event.data.groupPluralLabel,
+				objectLabel: event.data.objectLabel,
+				objectPluralLabel: event.data.objectPluralLabel,
+				positionLabel: event.data.positionLabel,
+				positionPluralLabel: event.data.positionPluralLabel,
 				transitionLabel: event.data.transitionLabel,
 				transitionPluralLabel: event.data.transitionPluralLabel,
-				positionLabel: event.data.positionLabel,
+				featureObjects: event.data.featureObjects,
 				featureComposition: event.data.featureComposition
 			}
 		});
