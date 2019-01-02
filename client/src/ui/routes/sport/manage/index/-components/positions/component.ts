@@ -41,8 +41,6 @@ export default class PositionsComponent extends SparklesComponent<PositionsArgs>
 	}
 
 	remove(id: string) {
-		console.log('remove', id);
-
 		this.deleting = id;
 		this.removeTask.perform(id);
 	}
