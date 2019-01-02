@@ -1,4 +1,6 @@
 export default interface Sport extends Object {
+	id: string;
+
 	title: string;
 	sortTitle: string;
 
@@ -12,8 +14,8 @@ export default interface Sport extends Object {
 	groupLabel: string;
 	groupPluralLabel: string;
 
-	objectLabel?: string;
-	objectPluralLabel?: string;
+	instrumentLabel?: string;
+	instrumentPluralLabel?: string;
 
 	positionLabel?: string;
 	positionPluralLabel?: string;
@@ -21,8 +23,9 @@ export default interface Sport extends Object {
 	transitionLabel?: string;
 	transitionPluralLabel?: string;
 
-	featureObjects: boolean;
+	featureInstruments: boolean;
 	featureComposition: boolean;
+	featureApparatuses: boolean;
 
 	approved: boolean;
 }

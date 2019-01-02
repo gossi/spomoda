@@ -25,10 +25,10 @@ const fields = {
 	groupPluralLabel: {
 		initialState: ''
 	},
-	objectLabel: {
+	instrumentLabel: {
 		initialState: ''
 	},
-	objectPluralLabel: {
+	instrumentPluralLabel: {
 		initialState: ''
 	},
 	positionLabel: {
@@ -43,10 +43,13 @@ const fields = {
 	transitionPluralLabel: {
 		initialState: ''
 	},
-	featureObjects: {
+	featureInstruments: {
 		initialState: false
 	},
 	featureComposition: {
+		initialState: false
+	},
+	featureApparatuses: {
 		initialState: false
 	},
 	approved: {
@@ -56,34 +59,12 @@ const fields = {
 
 const projections = {
 	'management.sport.suggested'(sports, event) {
-		sports.add({
-			// ...event.data
-			title: event.data.title,
-			sortTitle: event.data.sortTitle,
-			slug: event.data.slug,
-			athleteLabel: event.data.athleteLabel,
-			skillLabel: event.data.skillLabel,
-			skillPluralLabel: event.data.skillPluralLabel,
-			groupLabel: event.data.groupLabel,
-			groupPluralLabel: event.data.groupPluralLabel,
-			objectLabel: event.data.objectLabel,
-			objectPluralLabel: event.data.objectPluralLabel,
-			positionLabel: event.data.positionLabel,
-			positionPluralLabel: event.data.positionPluralLabel,
-			transitionLabel: event.data.transitionLabel,
-			transitionPluralLabel: event.data.transitionPluralLabel,
-			featureObjects: event.data.featureObjects,
-			featureComposition: event.data.featureComposition
-		});
+		sports.add(event.data);
 	},
 	'management.sport.approved'(sports, event) {
 		sports.update({
-			where: {
-				id: event.aggregate.id
-			},
-			set: {
-				approved: event.data.approved
-			}
+			where: { id: event.aggregate.id },
+			set: { approved: event.data.approved }
 		});
 	},
 	'management.sport.rejected'(sports, event) {
@@ -93,28 +74,8 @@ const projections = {
 	},
 	'management.sport.edited'(sports, event) {
 		sports.update({
-			where: {
-				id: event.aggregate.id
-			},
-			set: {
-				// ...event.data
-				title: event.data.title,
-				sortTitle: event.data.sortTitle,
-				slug: event.data.slug,
-				athleteLabel: event.data.athleteLabel,
-				skillLabel: event.data.skillLabel,
-				skillPluralLabel: event.data.skillPluralLabel,
-				groupLabel: event.data.groupLabel,
-				groupPluralLabel: event.data.groupPluralLabel,
-				objectLabel: event.data.objectLabel,
-				objectPluralLabel: event.data.objectPluralLabel,
-				positionLabel: event.data.positionLabel,
-				positionPluralLabel: event.data.positionPluralLabel,
-				transitionLabel: event.data.transitionLabel,
-				transitionPluralLabel: event.data.transitionPluralLabel,
-				featureObjects: event.data.featureObjects,
-				featureComposition: event.data.featureComposition
-			}
+			where: { id: event.aggregate.id },
+			set: event.data
 		});
 	}
 };

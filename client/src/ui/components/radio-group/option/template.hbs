@@ -1,0 +1,9 @@
+<label local-class="label">
+	<input type="radio" checked={{eq @value @group.args.value}} onchange={{bind this.change}}>
+
+	{{@label}}
+
+	{{#if @description}}
+		<small local-class="description">{{@description}}</small>
+	{{/if}}
+</label>

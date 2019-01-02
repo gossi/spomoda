@@ -9,6 +9,9 @@ export default class IndexRoute extends Route {
 		return await this.wolkenkit.live('sports', {
 			where: {
 				approved: true
+			},
+			orderBy: {
+				sortTitle: 'ascending'
 			}
 		});
 	}

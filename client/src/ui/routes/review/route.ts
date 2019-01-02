@@ -5,8 +5,8 @@ import WolkenkitService from '@spomoda/client/src/services/wolkenkit';
 export default class ReviewRoute extends Route {
 	@service wolkenkit!: WolkenkitService;
 
-	async model() {
-		return await this.wolkenkit.live('sports', {
+	model() {
+		return this.wolkenkit.live('sports', {
 			where: {
 				approved: false
 			}

@@ -17,11 +17,11 @@ Object.assign(moduleConfig.types, {
 	cldr: { definitiveCollection: 'main' },
 	translation: { definitiveCollection: 'main' },
 	'util:intl': { definitiveCollection: 'utils' },
-	'component-manager': {definitiveCollection: 'main'}
+	// 'component-manager': {definitiveCollection: 'main'}
 });
 
 moduleConfig.collections.main.types.push('config');
-moduleConfig.collections.main.types.push('component-manager');
+// moduleConfig.collections.main.types.push('component-manager');
 
 export default Resolver.extend({
 	config: moduleConfig

@@ -1,0 +1,23 @@
+{{#if @sport.featureComposition}}
+<h3>{{@sport.positionPluralLabel}}</h3>
+
+<div local-class="select-details">
+	<div>
+		<span local-class="item" class={{if (eq this.selected null) (local-class 'selected')}} onclick={{bind this.add}}><FaLight @icon='plus'/> {{t 'sport.manage.new' thing=@sport.positionLabel}}</span>
+		<ul local-class="list">
+			{{#each this.positions as |position|}}
+				<li local-class="item" class={{if (eq position this.selected) (local-class 'selected')}} onmousedown={{bind this.select position}}>
+					{{position.title}}
+					<span local-class="delete" onclick={{bind this.remove position.id}}><FaLight @icon='trash-alt'/></span>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+	<div>
+		{{#if this.task}}
+		<Form @position={{this.selected}} @task={{this.task}}/>
+		{{/if}}
+	</div>
+</div>
+
+{{/if}}

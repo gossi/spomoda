@@ -1,5 +1,3 @@
-import Changeset from 'ember-changeset';
-
 declare module 'ember-changeset' {
 
 	export type ValidationOk = true | [true];
@@ -51,5 +49,7 @@ declare module 'ember-changeset' {
 		snapshot(): Snapshot;
 		restore(snapshot: Snapshot): Changeset<T>;
 		isValidating(key?: string): boolean;
+
+		// [key: string]: keyof T;
 	}
 }

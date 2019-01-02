@@ -1,19 +1,59 @@
 {
 	"title": "Title",
+	"description": "Description",
 	"athlete": "Athlete",
 	"skill": "Skill",
 
-	"sport.form": {
-		"general": "General",
-		"general.description": "Overall information",
-		"sortTitle": "Sort Title",
-		"sortTitle.placeholder": "Leave empty for autofill",
-		"athlete.description": "How do athletes call themselves",
-		"skill": "Skill Label",
-		"skill.description": "How are skills called",
-		"skill-plural": "Skill Plural Label",
-		"language": "Language",
-		"language.description": "To stay within the language of the sport"
+	"suggest": "Suggest",
+	"save": "Save",
+	"add": "Add",
+
+
+
+	"sport": {
+		"manage": {
+			"new": "New {thing}"
+		},
+		"form": {
+			"general": "General",
+			"general.description": "Overall information",
+			"sortTitle": "Sort Title",
+			"sortTitle.placeholder": "Leave empty for autofill",
+			"features.instruments": "Instruments",
+			"features.instruments.description": "if the sport uses instruments, e.g. skateboard, rackets, etc.",
+			"features.composition": "Composition",
+			"features.composition.description": "if this is a compositorical sport, transitioning from one skill to another",
+			"features.apparatuses": "Apparatuses",
+			"features.apparatuses.description": "E.g. Artistics Gymnastics uses apparatuses",
+			"language": "Language",
+			"language.description": "To stay within the language of the sport",
+			"athlete.description": "How do athletes call themselves",
+			"skill": "Skill",
+			"skill.description": "How are skills called",
+			"skill-plural": "Skill Plural",
+			"group": "Group",
+			"group.description": "Some sports have specific names to group their skills",
+			"group-plural": "Group Plural",
+			"instrument": "Instrument",
+			"instrument.description": "How does a sport call his instruments? E.g. racket, skateboard, etc.",
+			"instrument-plural": "Instrument Plural",
+			"position": "Position",
+			"position.description": "Usually just 'position' but some sports may have a specific word for that",
+			"position-plural": "Position Plural",
+			"transition": "Transition",
+			"transition.description": "Sport specific label for their transitions",
+			"transition-plural": "Transition Plural"
+		}
+	},
+
+	"instrument.form": {
+		"type": "Type",
+		"manipulative": "Manipulative",
+		"manipulative.description": "An instrument which is used to manipulate a passive-reactive movendum, e.g. a racket to play a ball",
+		"supportive": "Supportive",
+		"supportive.description": "An instrument that supports the athlete itself, e.g. skies or a bike",
+		"movendum": "Movendum",
+		"movendum.description": "An instrument which is moved and handled, e.g. a skateboard, unicycle"
 	},
 
 	"errors": {

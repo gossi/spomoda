@@ -28,6 +28,9 @@
 			"@spomoda/client/src/*": [
 				"src/*"
 			],
+			"sparkles-component": [
+				"node_modules/sparkles-component/addon"
+			],
 			"sparkles-component/*": [
 				"node_modules/sparkles-component/addon/*"
 			],

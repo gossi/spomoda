@@ -10,7 +10,9 @@ Router.map(function () {
 	this.route('suggest');
 	this.route('review');
 	this.route('sport', { path: '/:slug' }, function() {
-		this.route('manage');
+		this.route('manage', function () {
+			this.route('edit');
+		});
 	});
 });
 

@@ -16,8 +16,8 @@ const initialState = {
 	groupLabel: '',
 	groupPluralLabel: '',
 
-	objectLabel: '',
-	objectPluralLabel: '',
+	instrumentLabel: '',
+	instrumentPluralLabel: '',
 
 	positionLabel: '',
 	positionPluralLabel: '',
@@ -25,8 +25,9 @@ const initialState = {
 	transitionLabel: '',
 	transitionPluralLabel: '',
 
-	featureObjects: false,
+	featureInstruments: false,
 	featureComposition: false,
+	featureApparatuses: false,
 
 	approved: false,
 
@@ -40,6 +41,9 @@ const initialState = {
 			},
 			reject: {
 				forPublic: true
+			},
+			edit: {
+				forPublic: true
 			}
 		},
 		events: {
@@ -50,6 +54,9 @@ const initialState = {
 				forPublic: true
 			},
 			rejected: {
+				forPublic: true
+			},
+			edited: {
 				forPublic: true
 			}
 		}
@@ -74,13 +81,13 @@ function validate(data) {
 		errors.skillPluralLabel = 'required';
 	}
 
-	if (data.featureObjects) {
-		if (!data.objectLabel) {
-			errors.objectLabel = 'required';
+	if (data.featureInstruments) {
+		if (!data.instrumentLabel) {
+			errors.instrumentLabel = 'required';
 		}
 
-		if (!data.objectPluralLabel) {
-			errors.objectPluralLabel = 'required';
+		if (!data.instrumentPluralLabel) {
+			errors.instrumentPluralLabel = 'required';
 		}
 	}
 
@@ -132,6 +139,10 @@ const commands = {
 
 	reject(sport, command) {
 		sport.events.publish('rejected');
+	},
+
+	edit(sport, command) {
+		sport.events.publish('edited', command.data);
 	}
 };
 
@@ -148,6 +159,10 @@ const events = {
 
 	rejected(sport, event) {
 		// does nothing here - d'uh
+	},
+
+	edited(sport, event) {
+		sport.setState(event.data);
 	}
 };
 

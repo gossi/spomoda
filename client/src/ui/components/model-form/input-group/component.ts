@@ -1,6 +1,7 @@
-import SparklesComponent, { tracked } from 'sparkles-component';
-import Changeset from 'ember-changeset';
 import { service } from '@ember-decorators/service';
+import Changeset from 'ember-changeset';
+import IntlService from 'ember-intl/services/intl';
+import SparklesComponent, { tracked } from 'sparkles-component';
 
 interface ModelFormInputGroupArgs {
 	model: Changeset<any>;
@@ -12,7 +13,7 @@ interface ModelFormInputGroupArgs {
 
 export default class ModelFormInputGroupComponent extends SparklesComponent<ModelFormInputGroupArgs> {
 
-	@service intl!;
+	@service intl!: IntlService;
 
 	@tracked('args')
 	get error(): string {

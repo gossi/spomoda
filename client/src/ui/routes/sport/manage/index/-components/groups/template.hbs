@@ -1,0 +1,20 @@
+<h3>{{@sport.groupPluralLabel}}</h3>
+
+<div local-class="select-details">
+	<div>
+		<span local-class="item" class={{if (eq this.selected null) (local-class 'selected')}} onclick={{bind this.add}}><FaLight @icon='plus'/> {{t 'sport.manage.new' thing=@sport.groupLabel}}</span>
+		<ul local-class="list">
+			{{#each this.groups as |group|}}
+				<li local-class="item" class={{if (eq group this.selected) (local-class 'selected')}} onclick={{bind this.select group}}>
+					{{group.title}}
+					<span local-class="delete" onclick={{bind this.remove group.id}}><FaLight @icon='trash-alt'/></span>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+	<div>
+		{{#if this.task}}
+		<Form @group={{this.selected}} @task={{this.task}}/>
+		{{/if}}
+	</div>
+</div>

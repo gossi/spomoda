@@ -1,0 +1,28 @@
+<ModelForm @model={{@instrument}} @task={{@task}} as |form|>
+	<form.input
+		@name='title'
+		@label={{t 'title'}}
+	/>
+
+	<form.input
+		@name='description'
+		@label={{t 'description'}}
+	/>
+
+	<RadioGroup
+		@label={{t 'instrument.form.type'}}
+		@value={{form.model.type}}
+		@changed={{action (mut form.model.type)}}
+		as |radio|>
+
+		{{#each this.types as |type|}}
+			<radio.option
+				@value={{type}}
+				@label={{t (concat 'instrument.form.' type)}}
+				@description={{t (concat 'instrument.form.' type '.description')}}/>
+		{{/each}}
+
+	</RadioGroup>
+
+	<Button type="submit" disabled={{or @task.isRunning (not form.model.isDirty)}}>{{t (if form.model.id 'save' 'add')}}</Button>
+</ModelForm>

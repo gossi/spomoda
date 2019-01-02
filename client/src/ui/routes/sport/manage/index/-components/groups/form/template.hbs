@@ -1,0 +1,13 @@
+<ModelForm @model={{@group}} @task={{@task}} as |form|>
+	<form.input
+		@name='title'
+		@label={{t 'title'}}
+	/>
+
+	<form.text
+		@name='description'
+		@label={{t 'description'}}
+	/>
+
+	<Button type="submit" disabled={{or @task.isRunning (not form.model.isDirty)}}>{{t (if form.model.id 'save' 'add')}}</Button>
+</ModelForm>

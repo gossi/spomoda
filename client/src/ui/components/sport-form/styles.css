@@ -1,17 +1,23 @@
-.sport-form {
-	fieldset {
-		border: 0;
-		margin: 0;
-		padding: 0;
-		margin-bottom: 15px;
-	}
+.group {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 15px;
 
-	legend {
-		width: 100%;
-		display: block;
-		font-size: 125%;
-		font-weight: bold;
-		border-bottom: 1px solid #000;
-		margin-bottom: 0;
-	}
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.legend {
+	width: 100%;
+	display: block;
+	font-size: 125%;
+	font-weight: bold;
+	border-bottom: 1px solid #000;
+	margin-bottom: 0;
+	grid-column-start: span 2;
+}
+
+.full {
+	grid-column-start: span 2;
 }
