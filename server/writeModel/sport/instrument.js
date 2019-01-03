@@ -12,14 +12,14 @@ const initialState = {
 
 	isAuthorized: {
 		commands: {
-			add: { forPublic: true },
-			edit: { forPublic: true },
-			remove: { forPublic: true }
+			add: { forAuthenticated: true },
+			edit: { forAuthenticated: true },
+			remove: { forAuthenticated: true }
 		},
 		events: {
-			added: { forPublic: true },
-			edited: { forPublic: true },
-			removed: { forPublic: true }
+			added: { forAuthenticated: true },
+			edited: { forAuthenticated: true },
+			removed: { forAuthenticated: true }
 		}
 	}
 };

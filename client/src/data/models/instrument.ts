@@ -11,4 +11,5 @@ export default interface Instrument {
 	slug: string;
 	descrption: string;
 	type: InstrumentType;
+	skillIds: string[];
 }

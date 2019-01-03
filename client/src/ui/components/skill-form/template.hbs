@@ -1,0 +1,25 @@
+<ModelForm @model={{@skill}} @task={{@task}} as |form|>
+	<section local-class="group">
+		<h3 local-class="legend">{{t 'skill.form.informative'}}</h3>
+
+		<form.input @name='name' @label={{t 'terms.name'}} />
+
+		<form.input @name='slug' @label={{t 'terms.slug'}} />
+
+		<form.text
+			@name='description'
+			@label={{t 'terms.description'}}
+			@placeholder={{t 'skill.form.description.placeholder' skill=@sport.skillLabel}}/>
+
+		<form.text
+			@name='history'
+			@label={{t 'terms.history'}}
+			@placeholder={{t 'skill.form.history.placeholder' skill=@sport.skillLabel}}/>
+	</section>
+
+	<section local-class="group">
+		<h3 local-class="legend">{{t 'terms.structure'}}</h3>
+
+
+	</section>
+</ModelForm>

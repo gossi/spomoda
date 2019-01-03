@@ -5,7 +5,8 @@ const fields = {
 	title: { initialState: '' },
 	slug: { initialState: '' },
 	description: { initialState: '' },
-	type: { initialState: undefined }
+	type: { initialState: undefined },
+	skills: { initialState: [] }
 };
 
 const projections = {

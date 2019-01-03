@@ -40,7 +40,9 @@ export default class FormComponent<T> extends SparklesComponent<FormArgs> {
 		if (this.args.task) {
 			const task = this.args.task.perform(this.model);
 			task.catch((err: any) => {
-				this.errors = err;
+				for (let [key, value] of Object.entries(err)) {
+					this.model.addError(key, value);
+				}
 			});
 		}
 	}

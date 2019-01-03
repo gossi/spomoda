@@ -1,4 +1,4 @@
-export default interface Position {
+export default interface Group {
 	id: string;
 	sportId: string;
 	title: string;

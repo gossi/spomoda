@@ -2,13 +2,23 @@
 	<layout.header local-class="header">
 		{{#link-to 'sport' @sport.slug tagName='h1'}}{{@sport.title}}{{/link-to}}
 
-		<nav>
+		<nav local-class="manage">
 			{{#link-to 'sport.manage' @sport.slug}}manage{{/link-to}}
-			Add Group
+			{{#link-to 'sport.add' @sport.slug class=(concat 'fa-layers ' (local-class "add-skill"))}}
+				<FaLight @icon='child'/>
+				<FaSolid @icon='circle' @transform='shrink-7 down-5 right-5'/>
+				<FaLight @icon='plus' @transform='shrink-9 down-5 right-5' local-class="plus"/>
+			{{/link-to}}
 		</nav>
 	</layout.header>
 
-	<layout.main>
-		{{yield}}
+	<layout.main class={{if @nav (local-class 'split')}}>
+		<div local-class="main">
+			{{yield}}
+		</div>
+
+		{{#if @nav}}
+		<Nav @sport={{@sport}} local-class="nav"/>
+		{{/if}}
 	</layout.main>
 </Layout>

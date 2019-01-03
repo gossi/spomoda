@@ -17,8 +17,8 @@ export default class ModelFormInputGroupComponent extends SparklesComponent<Mode
 
 	@tracked('args')
 	get error(): string {
-		if (this.args.errors && this.args.errors[this.args.name]) {
-			return this.intl.t(`errors.${this.args.errors[this.args.name]}`, {
+		if (this.args.model.error[this.args.name]) {
+			return this.intl.t(`errors.${this.args.model.error[this.args.name].validation}`, {
 				field: this.args.label
 			});
 		}

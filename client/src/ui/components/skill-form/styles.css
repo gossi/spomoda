@@ -1,0 +1,19 @@
+.group {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 15px;
+}
+
+.legend {
+	width: 100%;
+	display: block;
+	font-size: 125%;
+	font-weight: bold;
+	border-bottom: 1px solid #000;
+	margin-bottom: 0;
+}
+
+.full {
+	grid-column-start: span 2;
+}

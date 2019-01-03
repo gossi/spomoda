@@ -2,13 +2,28 @@ import { A } from '@ember/array';
 import EmberObject from '@ember/object';
 import Service from '@ember/service';
 import wolkenkit from 'wolkenkit-client';
+import { computed } from '@ember-decorators/object';
 
 export default class WokkenkitService extends Service {
 
 	connection!: any;
 
 	async connect() {
-		this.connection = await wolkenkit.connect({ host: 'local.wolkenkit.io', port: 3000 });
+		this.connection = await wolkenkit.connect({
+			host: 'local.wolkenkit.io',
+			port: 3000,
+			authentication: new wolkenkit.authentication.OpenIdConnect({
+				identityProviderUrl: 'https://gossi.eu.auth0.com/authorize',
+				clientId: '3X32BTs46P5w3wliDgKPs9oB8TIYgWmv',
+				scope: 'profile',
+				strictMode: false
+			})
+		});
+	}
+
+	@computed('connection')
+	get auth(): any {
+		return this.connection.auth;
 	}
 
 	private debug(...args: any[]) {

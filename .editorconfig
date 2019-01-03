@@ -19,6 +19,6 @@ insert_final_newline = false
 [*.{diff,md}]
 trim_trailing_whitespace = false
 
-[{*.yaml,package.json}]
+[package.json]
 ident_style = space
 ident_size = 2

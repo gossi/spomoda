@@ -13,6 +13,7 @@ Router.map(function () {
 		this.route('manage', function () {
 			this.route('edit');
 		});
+		this.route('add');
 	});
 });
 

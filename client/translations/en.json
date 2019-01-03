@@ -1,14 +1,23 @@
 {
-	"title": "Title",
-	"description": "Description",
-	"athlete": "Athlete",
-	"skill": "Skill",
+	"terms": {
+		"name": "Name",
+		"title": "Title",
+		"description": "Description",
+		"slug": "Slug",
+		"history": "History",
 
-	"suggest": "Suggest",
-	"save": "Save",
-	"add": "Add",
+		"athlete": "Athlete",
+		"skill": "Skill",
+		"structure": "Structure",
+		"classification": "Classification"
+	},
 
-
+	"actions": {
+		"suggest": "Suggest",
+		"review": "Review",
+		"save": "Save",
+		"add": "Add"
+	},
 
 	"sport": {
 		"manage": {
@@ -54,6 +63,16 @@
 		"supportive.description": "An instrument that supports the athlete itself, e.g. skies or a bike",
 		"movendum": "Movendum",
 		"movendum.description": "An instrument which is moved and handled, e.g. a skateboard, unicycle"
+	},
+
+	"skill": {
+		"add": "Add {skill}",
+		"form": {
+			"informative": "Informative",
+			"slug.placeholder": "Leave empty for auto-generation",
+			"description.placeholder": "One or two sentences desribing the {skill}",
+			"history.placeholder": "Some history about that {skill}, e.g. who invented the {skill} or what's the story behind?"
+		}
 	},
 
 	"errors": {

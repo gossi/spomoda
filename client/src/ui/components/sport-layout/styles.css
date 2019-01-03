@@ -3,3 +3,28 @@
 	justify-content: space-between;
 	align-items: center;
 }
+
+.manage {
+	display: flex;
+	align-items: center;
+}
+
+.split {
+	display: grid;
+	grid-template-columns: auto 250px;
+}
+
+.nav {
+	border-left: 1px solid grey;
+	margin-top: -16px;
+	margin-bottom: -16px;
+	padding-left: 16px;
+}
+
+.add-skill {
+	font-size: 48px;
+}
+
+.plus {
+	color: #FFF;
+}

@@ -4,7 +4,8 @@ const fields = {
 	sportId: { initialState: undefined },
 	title: { initialState: '' },
 	slug: { initialState: '' },
-	description: { initialState: '' }
+	description: { initialState: '' },
+	skills: { initialState: [] }
 };
 
 const projections = {

@@ -34,30 +34,30 @@ const initialState = {
 	isAuthorized: {
 		commands: {
 			suggest: {
-				forPublic: true
+				forAuthenticated: true
 			},
 			approve: {
-				forPublic: true
+				forAuthenticated: true
 			},
 			reject: {
-				forPublic: true
+				forAuthenticated: true
 			},
 			edit: {
-				forPublic: true
+				forAuthenticated: true
 			}
 		},
 		events: {
 			suggested: {
-				forPublic: true
+				forAuthenticated: true
 			},
 			approved: {
-				forPublic: true
+				forAuthenticated: true
 			},
 			rejected: {
-				forPublic: true
+				forAuthenticated: true
 			},
 			edited: {
-				forPublic: true
+				forAuthenticated: true
 			}
 		}
 	}
@@ -113,23 +113,26 @@ function validate(data) {
 }
 
 const commands = {
-	suggest(sport, command) {
-		const errors = validate(command.data);
+	suggest: [
+		(sport, command) => {
+			const errors = validate(command.data);
 
-		if (Object.keys(errors).length) {
-			return command.reject(JSON.stringify(errors));
+			if (Object.keys(errors).length) {
+				return command.reject(JSON.stringify(errors));
+			}
+		},
+		(sport, command) => {
+			if (!command.data.slug) {
+				command.data.slug = slugify(command.data.title, {lower: true});
+			}
+
+			if (!command.data.sortTitle) {
+				command.data.sortTitle = command.data.title;
+			}
+
+			sport.events.publish('suggested', command.data);
 		}
-
-		if (!command.data.slug) {
-			command.data.slug = slugify(command.data.title, {lower: true});
-		}
-
-		if (!command.data.sortTitle) {
-			command.data.sortTitle = command.data.title;
-		}
-
-		sport.events.publish('suggested', command.data);
-	},
+	],
 
 	approve(sport, command) {
 		sport.events.publish('approved', {

@@ -8,6 +8,40 @@ const initialState = {
 	title: '',
 	slug: '',
 	description: '',
+	history: '',
+	isTranslation: false,
+	isRotation: false,
+	isDiscrete: false,
+	isRhythmic: false,
+	longitudinal: {
+		athlete: false,
+		instrument: false,
+		sync: null,
+		direction: null
+	},
+	latitudinal: {
+		athlete: false,
+		instrument: false,
+		sync: null,
+		direction: null
+	},
+	transversal: {
+		athlete: false,
+		instrument: false,
+		sync: null,
+		direction: null
+	},
+	movementDescription: '',
+	variations: [],
+	startPosition: undefined,
+	endPosition: undefined,
+	isComposite: false,
+	isMultiple: false,
+	multipleOf: undefined,
+	multiplier: undefined,
+	generation: 0,
+	importance: 0,
+	instrumentId: undefined,
 
 	isAuthorized: {
 		commands: {
@@ -35,34 +69,34 @@ const commands = {
 			},
 			required: ['sportId', 'title']
 		}),
-		(position, command) => {
+		(group, command) => {
 			if (!command.data.slug) {
 				command.data.slug = slugify(command.data.title, { lower: true });
 			}
 
-			position.events.publish('added', command.data);
+			group.events.publish('added', command.data);
 		}
 	],
 	edit: [
 		only.ifExists(),
-		(position, command) => {
-			position.events.publish('edited', command.data);
+		(group, command) => {
+			group.events.publish('edited', command.data);
 		}
 	],
 	remove: [
 		only.ifExists(),
-		(position, command) => {
-			position.events.publish('removed');
+		(group, command) => {
+			group.events.publish('removed');
 		}
 	]
 };
 
 const events = {
-	added(position, event) {
-		position.setState(event.data);
+	added(group, event) {
+		group.setState(event.data);
 	},
-	edited(position, event) {
-		position.setState(event.data);
+	edited(group, event) {
+		group.setState(event.data);
 	},
 	removed() {
 
