@@ -1,0 +1,38 @@
+{
+	"compilerOptions": {
+		"target": "esnext",
+		"allowJs": true,
+		"moduleResolution": "node",
+		"isolatedModules": true,
+		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noEmitOnError": false,
+		"noEmit": true,
+		"inlineSourceMap": true,
+		"inlineSources": true,
+		"baseUrl": ".",
+		"module": "esnext",
+		"esModuleInterop": true,
+		"paths": {
+			"@spomoda/server/src/*": [
+				"src/*"
+			],
+			"*": [
+				"types/*"
+			],
+		}
+	},
+	"include": [
+		"src/**/*",
+		"types/**/*"
+	]
+}

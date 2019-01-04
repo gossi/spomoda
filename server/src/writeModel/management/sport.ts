@@ -1,8 +1,8 @@
-'use strict';
+import slugify from 'slugify';
+import { Data } from 'wolkenkit';
+import { Commands, Events, InitialState } from 'wolkenkit/writeModel';
 
-const slugify = require('slugify');
-
-const initialState = {
+export const initialState: InitialState = {
 	title: '',
 	sortTitle: '',
 
@@ -63,8 +63,9 @@ const initialState = {
 	}
 };
 
-function validate(data) {
-	const errors = {};
+function validate(data: Data) {
+	const errors: Data = {};
+
 	if (!data.title) {
 		errors.title = 'required';
 	}
@@ -112,7 +113,7 @@ function validate(data) {
 	return errors;
 }
 
-const commands = {
+export const commands: Commands = {
 	suggest: [
 		(sport, command) => {
 			const errors = validate(command.data);
@@ -149,7 +150,7 @@ const commands = {
 	}
 };
 
-const events = {
+export const events: Events = {
 	suggested(sport, event) {
 		sport.setState(event.data);
 	},
@@ -167,10 +168,4 @@ const events = {
 	edited(sport, event) {
 		sport.setState(event.data);
 	}
-};
-
-module.exports = {
-	initialState,
-	commands,
-	events
 };

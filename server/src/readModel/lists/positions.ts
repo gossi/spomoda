@@ -1,6 +1,6 @@
-'use strict';
+import { Fields, Projections } from 'wolkenkit/readModel';
 
-const fields = {
+export const fields: Fields = {
 	sportId: { initialState: undefined },
 	title: { initialState: '' },
 	slug: { initialState: '' },
@@ -8,7 +8,7 @@ const fields = {
 	skills: { initialState: [] }
 };
 
-const projections = {
+export const projections: Projections = {
 	'sport.position.added'(positions, event) {
 		positions.add(event.data);
 	},
@@ -23,9 +23,4 @@ const projections = {
 			where: { id: event.aggregate.id }
 		});
 	}
-};
-
-module.exports = {
-	fields,
-	projections
 };

@@ -1,13 +1,46 @@
-'use strict';
+import slugify from 'slugify';
+import { only } from 'wolkenkit-command-tools';
+import { Commands, Events, InitialState } from 'wolkenkit/writeModel';
 
-const { only } = require('wolkenkit-command-tools');
-const slugify = require('slugify');
-
-const initialState = {
+export const initialState: InitialState = {
 	sportId: undefined,
 	title: '',
 	slug: '',
 	description: '',
+	history: '',
+	isTranslation: false,
+	isRotation: false,
+	isDiscrete: false,
+	isRhythmic: false,
+	longitudinal: {
+		athlete: false,
+		instrument: false,
+		sync: null,
+		direction: null
+	},
+	latitudinal: {
+		athlete: false,
+		instrument: false,
+		sync: null,
+		direction: null
+	},
+	transversal: {
+		athlete: false,
+		instrument: false,
+		sync: null,
+		direction: null
+	},
+	movementDescription: '',
+	variations: [],
+	startPosition: undefined,
+	endPosition: undefined,
+	isComposite: false,
+	isMultiple: false,
+	multipleOf: undefined,
+	multiplier: undefined,
+	generation: 0,
+	importance: 0,
+	instrumentId: undefined,
 
 	isAuthorized: {
 		commands: {
@@ -23,7 +56,7 @@ const initialState = {
 	}
 };
 
-const commands = {
+export const commands: Commands = {
 	add: [
 		only.ifCommandValidatedBy({
 			type: 'object',
@@ -57,7 +90,7 @@ const commands = {
 	]
 };
 
-const events = {
+export const events: Events = {
 	added(group, event) {
 		group.setState(event.data);
 	},
@@ -67,10 +100,4 @@ const events = {
 	removed() {
 
 	}
-};
-
-module.exports = {
-	initialState,
-	commands,
-	events
 };

@@ -1,9 +1,8 @@
-'use strict';
+import slugify from 'slugify';
+import { only } from 'wolkenkit-command-tools';
+import { Commands, Events, InitialState } from 'wolkenkit/writeModel';
 
-const { only } = require('wolkenkit-command-tools');
-const slugify = require('slugify');
-
-const initialState = {
+export const initialState: InitialState = {
 	sportId: undefined,
 	title: '',
 	slug: '',
@@ -24,7 +23,7 @@ const initialState = {
 	}
 };
 
-const commands = {
+export const commands: Commands = {
 	add: [
 		only.ifCommandValidatedBy({
 			type: 'object',
@@ -59,7 +58,7 @@ const commands = {
 	]
 };
 
-const events = {
+export const events: Events = {
 	added(instrument, event) {
 		instrument.setState(event.data);
 	},
@@ -69,10 +68,4 @@ const events = {
 	removed() {
 
 	}
-};
-
-module.exports = {
-	initialState,
-	commands,
-	events
 };
