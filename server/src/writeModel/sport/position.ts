@@ -50,7 +50,7 @@ export const commands: Commands = {
 	],
 	remove: [
 		only.ifExists(),
-		(position, command) => {
+		(position, _command) => {
 			position.events.publish('removed');
 		}
 	]
@@ -64,6 +64,6 @@ export const events: Events = {
 		position.setState(event.data);
 	},
 	removed() {
-
+		// do nothing special here
 	}
 };

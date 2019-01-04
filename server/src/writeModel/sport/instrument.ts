@@ -52,7 +52,7 @@ export const commands: Commands = {
 	],
 	remove: [
 		only.ifExists(),
-		(instrument, command) => {
+		(instrument, _command) => {
 			instrument.events.publish('removed');
 		}
 	]
@@ -66,6 +66,6 @@ export const events: Events = {
 		instrument.setState(event.data);
 	},
 	removed() {
-
+		// do nothing special here
 	}
 };

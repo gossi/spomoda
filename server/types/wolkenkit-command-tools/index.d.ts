@@ -1,4 +1,4 @@
-import { CommandMethodSignature } from 'wolkenkit/writeModel';
+import { CommandMethodSignature } from 'wolkenkit/writeModel/internals';
 
 declare module 'wolkenkit-command-tools' {
 

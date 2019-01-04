@@ -1,6 +1,5 @@
 import { Fields, Projections } from 'wolkenkit/readModel';
 
-
 export const fields: Fields = {
 	title: { initialState: '' },
 	sortTitle: { initialState: '' },

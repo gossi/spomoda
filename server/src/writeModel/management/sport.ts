@@ -115,7 +115,7 @@ function validate(data: Data) {
 
 export const commands: Commands = {
 	suggest: [
-		(sport, command) => {
+		(_sport, command) => {
 			const errors = validate(command.data);
 
 			if (Object.keys(errors).length) {
@@ -135,13 +135,13 @@ export const commands: Commands = {
 		}
 	],
 
-	approve(sport, command) {
+	approve(sport, _command) {
 		sport.events.publish('approved', {
 			approved: true
 		});
 	},
 
-	reject(sport, command) {
+	reject(sport, _command) {
 		sport.events.publish('rejected');
 	},
 
@@ -161,7 +161,7 @@ export const events: Events = {
 		});
 	},
 
-	rejected(sport, event) {
+	rejected(_sport, _event) {
 		// does nothing here - d'uh
 	},
 
