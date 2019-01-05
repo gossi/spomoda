@@ -1,0 +1,19 @@
+.form-group {
+	margin-bottom: 10px;
+}
+
+.label {
+	display: block;
+	font-weight: bold;
+}
+
+.description {
+	display: block;
+	padding: 5px 0;
+	font-size: 80%;
+}
+
+.error {
+	color: red;
+	display: block;
+}

@@ -1,4 +1,4 @@
-<ModelForm @model={{@skill}} @task={{@task}} as |form|>
+<ModelForm @model={{this.skill}} @task={{@task}} as |form|>
 	<section local-class="group">
 		<h3 local-class="legend">{{t 'skill.form.informative'}}</h3>
 
@@ -20,6 +20,42 @@
 	<section local-class="group">
 		<h3 local-class="legend">{{t 'terms.structure'}}</h3>
 
+		<FormGroup @label={{@sport.groupPluralLabel}} as |id|>
+			<PowerSelectMultiple
+				@id={{id}}
+				@options={{sort-by 'title' this.groups}}
+				@selected={{form.model.groups}}
+				@onchange={{action (mut form.model.groups)}}
+				as |group|>
+				{{group.title}}
+			</PowerSelectMultiple>
+		</FormGroup>
 
+		{{!--
+
+				@searchField='title'
+				@allowClear={{true}
+
+				--}}
 	</section>
+
+	<section local-class="group">
+		<h3 local-class="legend">{{t 'terms.relationships'}}</h3>
+
+		<RadioGroup
+			@label={{t 'skill.type'}}
+			@value={{form.model.type}}
+			@changed={{action (mut form.model.type)}}
+			as |radio|>
+
+			{{#each this.types as |type|}}
+				<radio.option
+					@value={{type}}
+					@label={{t (concat 'skill.form.' type)}}
+					@description={{t (concat 'skill.form.' type '.description')}}/>
+			{{/each}}
+
+		</RadioGroup>
+	</section>
+
 </ModelForm>

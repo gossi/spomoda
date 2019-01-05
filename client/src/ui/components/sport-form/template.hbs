@@ -7,7 +7,7 @@
 
 			<form.input
 				@name='title'
-				@label={{t 'title'}} />
+				@label={{t 'terms.title'}} />
 
 			<form.input
 				@name='sortTitle'
@@ -47,7 +47,7 @@
 
 			<form.input
 				@name='athleteLabel'
-				@label={{t 'athlete'}}
+				@label={{t 'terms.athlete'}}
 				@description={{t 'sport.form.athlete.description'}} />
 		</div>
 
@@ -112,5 +112,5 @@
 	</section>
 
 	<Button onclick={{bind form.rollback}} disabled={{not form.model.isDirty}}>Reset</Button>
-	<Button type="submit" disabled={{or @task.isRunning (not form.model.isDirty)}}>{{t (if form.model.id 'save' 'suggest')}}</Button>
+	<Button type="submit" disabled={{or @task.isRunning (not form.model.isDirty)}}>{{t (if form.model.id 'actions.save' 'actions.suggest')}}</Button>
 </ModelForm>

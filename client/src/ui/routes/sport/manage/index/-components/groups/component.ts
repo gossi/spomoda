@@ -4,7 +4,7 @@ import Sport from '@spomoda/client/src/data/models/sport';
 import WolkenkitService from '@spomoda/client/src/services/wolkenkit';
 import Changeset from 'ember-changeset';
 import { dropTask } from 'ember-concurrency-decorators';
-import { Task } from 'ember-concurrency/-task-property';
+import Task from 'ember-concurrency/task';
 import SparklesComponent, { tracked } from 'sparkles-component';
 
 interface GroupsArgs {
@@ -31,7 +31,7 @@ export default class GroupsComponent extends SparklesComponent<GroupsArgs> {
 	}
 
 	select(group: Group) {
-		if (this.deleting = group.id) {
+		if (this.deleting === group.id) {
 			return;
 		}
 
@@ -52,6 +52,7 @@ export default class GroupsComponent extends SparklesComponent<GroupsArgs> {
 
 		yield this.wolkenkit.command('sport.group.add', 'added', Object.assign({sportId: this.args.sport.id}, model.change));
 		this.task = undefined;
+		this.selected = undefined;
 		return true;
 	}
 

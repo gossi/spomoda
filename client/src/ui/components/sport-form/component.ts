@@ -1,5 +1,5 @@
 import Sport from '@spomoda/client/src/data/models/sport';
-import { Task } from 'ember-concurrency/-task-property';
+import Task from 'ember-concurrency/task';
 import SparklesComponent from 'sparkles-component';
 
 interface Args {

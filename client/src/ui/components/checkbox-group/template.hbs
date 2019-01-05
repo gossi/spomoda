@@ -1,13 +1,5 @@
-<div local-class="checkbox-group" ...attributes>
-	{{#if @label}}
-		<label local-class="label" for={{this.id}}>{{@label}}</label>
-	{{/if}}
-
-	{{#if @description}}
-		<label local-class="description" for={{this.id}}>{{@description}}</label>
-	{{/if}}
-
+<FormGroup @label={{@label}} @description={{@description}} ...attributes>
 	<div>
 		{{yield (hash checkbox=(component 'checkbox'))}}
 	</div>
-</div>
+</FormGroup>

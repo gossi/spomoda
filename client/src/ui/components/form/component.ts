@@ -1,6 +1,6 @@
 import { observes } from '@ember-decorators/object';
 import Changeset from 'ember-changeset';
-import { Task } from 'ember-concurrency/-task-property';
+import Task from 'ember-concurrency/task';
 import SparklesComponent, { tracked } from 'sparkles-component';
 
 interface FormArgs {
@@ -11,7 +11,6 @@ interface FormArgs {
 export default class FormComponent<T> extends SparklesComponent<FormArgs> {
 
 	@tracked model: Changeset<T>;
-	@tracked errors: any;
 	last: any;
 
 	constructor(args: FormArgs) {

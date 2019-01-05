@@ -63,7 +63,7 @@
     "ember-power-select": "^2.2.1",
     "ember-qunit": "^4.2.0",
     "ember-resolver": "github:ember-cli/ember-resolver",
-    "ember-source": "https://s3.amazonaws.com/builds.emberjs.com/canary/shas/3841aa13f75951130bce88cb0a1ce4e876c582fc.tgz",
+    "ember-source": "https://s3.amazonaws.com/builds.emberjs.com/canary/shas/359acc174a30a0bb1fe0e68dc7e794297432afd0.tgz",
     "ember-truth-helpers": "^2.1.0",
     "eslint-plugin-ember": "^6.1.0",
     "loader.js": "^4.7.0",

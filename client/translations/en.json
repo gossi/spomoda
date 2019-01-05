@@ -9,7 +9,9 @@
 		"athlete": "Athlete",
 		"skill": "Skill",
 		"structure": "Structure",
-		"classification": "Classification"
+		"relationships": "Relationships",
+		"classification": "Classification",
+		"movement": "Movement"
 	},
 
 	"actions": {

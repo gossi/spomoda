@@ -4,8 +4,8 @@ import Sport from '@spomoda/client/src/data/models/sport';
 import WolkenkitService from '@spomoda/client/src/services/wolkenkit';
 import Changeset from 'ember-changeset';
 import { dropTask } from 'ember-concurrency-decorators';
+import Task from 'ember-concurrency/task';
 import SparklesComponent, { tracked } from 'sparkles-component';
-import { Task } from 'ember-concurrency/-task-property';
 
 interface InstrumentsArgs {
 	sport: Sport;
@@ -52,6 +52,7 @@ export default class InstrumentsComponent extends SparklesComponent<InstrumentsA
 
 		yield this.wolkenkit.command('sport.instrument.add', 'added', Object.assign({sportId: this.args.sport.id}, model.change));
 		this.task = undefined;
+		this.selected = undefined;
 		return true;
 	}
 

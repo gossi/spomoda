@@ -12,7 +12,6 @@ interface ModelFormTextareaGroupArgs {
 }
 
 export default class ModelFormTextareaGroupComponent extends SparklesComponent<ModelFormTextareaGroupArgs> {
-
 	@service intl!: IntlService;
 
 	@tracked('args')

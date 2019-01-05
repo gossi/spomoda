@@ -1,12 +1,12 @@
 <ModelForm @model={{@instrument}} @task={{@task}} as |form|>
 	<form.input
 		@name='title'
-		@label={{t 'title'}}
+		@label={{t 'terms.title'}}
 	/>
 
 	<form.input
 		@name='description'
-		@label={{t 'description'}}
+		@label={{t 'terms.description'}}
 	/>
 
 	<RadioGroup
@@ -24,5 +24,5 @@
 
 	</RadioGroup>
 
-	<Button type="submit" disabled={{or @task.isRunning (not form.model.isDirty)}}>{{t (if form.model.id 'save' 'add')}}</Button>
+	<Button type="submit" disabled={{or @task.isRunning (not form.model.isDirty)}}>{{t (if form.model.id 'actions.save' 'actions.add')}}</Button>
 </ModelForm>
