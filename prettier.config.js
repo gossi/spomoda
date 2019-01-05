@@ -14,7 +14,7 @@ module.exports = {
 			}
 		},
 		{
-			"files": ["*package.json", "*.yml"],
+			"files": ["package.json", "*.yml"],
 			"options": {
 				"tabWidth": 2,
 				"useTabs": false,
