@@ -23,20 +23,15 @@
 		<FormGroup @label={{@sport.groupPluralLabel}} as |id|>
 			<PowerSelectMultiple
 				@id={{id}}
-				@options={{sort-by 'title' this.groups}}
+				@allowClear={{true}}
+				@searchField='title'
 				@selected={{form.model.groups}}
+				@options={{sort-by 'title' this.groups}}
 				@onchange={{action (mut form.model.groups)}}
 				as |group|>
 				{{group.title}}
 			</PowerSelectMultiple>
 		</FormGroup>
-
-		{{!--
-
-				@searchField='title'
-				@allowClear={{true}
-
-				--}}
 	</section>
 
 	<section local-class="group">
@@ -58,4 +53,5 @@
 		</RadioGroup>
 	</section>
 
+	<Button type="submit" disabled={{or @task.isRunning (not form.model.isDirty)}}>{{t 'actions.save'}}</Button>
 </ModelForm>

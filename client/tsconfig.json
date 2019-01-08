@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "es2017",
+		"target": "esnext",
 		"allowJs": true,
 		"moduleResolution": "node",
 		"isolatedModules": true,
@@ -20,7 +20,7 @@
 		"inlineSourceMap": true,
 		"inlineSources": true,
 		"baseUrl": ".",
-		"module": "es6",
+		"module": "esnext",
 		"paths": {
 			"@spomoda/client/tests/*": [
 				"tests/*"

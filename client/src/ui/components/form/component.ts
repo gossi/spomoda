@@ -1,4 +1,3 @@
-import { observes } from '@ember-decorators/object';
 import Changeset from 'ember-changeset';
 import Task from 'ember-concurrency/task';
 import SparklesComponent, { tracked } from 'sparkles-component';
@@ -8,7 +7,7 @@ interface FormArgs {
 	model: any;
 }
 
-export default class FormComponent<T> extends SparklesComponent<FormArgs> {
+export default class FormComponent<T extends object> extends SparklesComponent<FormArgs> {
 
 	@tracked model: Changeset<T>;
 	last: any;
@@ -18,15 +17,6 @@ export default class FormComponent<T> extends SparklesComponent<FormArgs> {
 
 		this.last = this.args.model;
 		this.model = new Changeset(this.args.model || {});
-	}
-
-	@observes('args')
-	modelObserver() {
-		if (this.last !== this.args.model) {
-			const data = this.args.model === null ? {} : this.args.model;
-			this.last = this.args.model;
-			this.model = new Changeset(data);
-		}
 	}
 
 	rollback() {

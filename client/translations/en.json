@@ -69,11 +69,18 @@
 
 	"skill": {
 		"add": "Add {skill}",
+		"type": "Type",
 		"form": {
 			"informative": "Informative",
 			"slug.placeholder": "Leave empty for auto-generation",
 			"description.placeholder": "One or two sentences desribing the {skill}",
-			"history.placeholder": "Some history about that {skill}, e.g. who invented the {skill} or what's the story behind?"
+			"history.placeholder": "Some history about that {skill}, e.g. who invented the {skill} or what's the story behind?",
+			"skill": "Skill",
+			"skill.description": "A typical skill",
+			"composite": "Composite",
+			"composite.description": "Is constructed of multiple skills",
+			"multiple": "Multiple",
+			"multiple.description": "Serves as abstract Idea. Concrete multiples contain the multiplier degree."
 		}
 	},
 

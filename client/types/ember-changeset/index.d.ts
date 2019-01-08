@@ -1,4 +1,6 @@
 declare module 'ember-changeset' {
+	import EmberObject from '@ember/object';
+	import Evented from '@ember/object/evented';
 
 	export type ValidationOk = true | [true];
 	export type ValidationErr = string | Array<string>;
@@ -22,7 +24,7 @@ declare module 'ember-changeset' {
 		[key: string]: Inflated<T> | T,
 	};
 
-	export default class Changeset<T> {
+	export default class Changeset<T extends object> extends EmberObject {
 		error: Inflated<ErrLike<any>>;
 		change: Inflated<any>;
 		errors: Inflated<ErrLike<any>>[];
@@ -33,10 +35,11 @@ declare module 'ember-changeset' {
 		isPristine: boolean;
 		isDirty: boolean;
 
-		constructor(model: T | Object);
+		// not yet, see: https://github.com/Microsoft/TypeScript/pull/26797?
+		// [P in keyof T]: T[P];
 
-		get(key: string): any;
-		set(key: string, value: any): void;
+		constructor(model: T);
+
 		prepare(cb: (changes: object[]) => void): void;
 		execute(): Changeset<T>;
 		save(): Promise<T>;
@@ -50,6 +53,47 @@ declare module 'ember-changeset' {
 		restore(snapshot: Snapshot): Changeset<T>;
 		isValidating(key?: string): boolean;
 
-		// [key: string]: keyof T;
+		// evented
+
+		/**
+		 * Subscribes to a named event with given function.
+		 */
+		on<Target>(
+			name: string,
+			target: Target,
+			method: (this: Target, ...args: any[]) => void
+		): this;
+		on(name: string, method: (...args: any[]) => void): this;
+		/**
+		 * Subscribes a function to a named event and then cancels the subscription
+		 * after the first time the event is triggered. It is good to use ``one`` when
+		 * you only care about the first time an event has taken place.
+		 */
+		one<Target>(
+			name: string,
+			target: Target,
+			method: (this: Target, ...args: any[]) => void
+		): this;
+		one(name: string, method: (...args: any[]) => void): this;
+		/**
+		 * Triggers a named event for the object. Any additional arguments
+		 * will be passed as parameters to the functions that are subscribed to the
+		 * event.
+		 */
+		trigger(name: string, ...args: any[]): any;
+		/**
+		 * Cancels subscription for given name, target, and method.
+		 */
+		off<Target>(
+			name: string,
+			target: Target,
+			method: (this: Target, ...args: any[]) => void
+		): this;
+		off(name: string, method: (...args: any[]) => void): this;
+		/**
+		 * Checks to see if object has any subscriptions for named event.
+		 */
+		has(name: string): boolean;
 	}
+
 }

@@ -22,18 +22,13 @@ export default class SkillFormComponent extends SparklesComponent<SkillFormArgs>
 		groups: []
 	};
 
-	@tracked instruments: Instrument[] = [];
-	@tracked groups: Group[] = [];
+	@tracked instruments?: Instrument[];
+	@tracked groups?: Group[];
 
 	types = [SkillType.SKILL, SkillType.COMPOSITE, SkillType.MULTIPLE];
 
-	firstRun = true;
-
 	async didInsertElement() {
-		if (this.firstRun) {
-			this.groups = await this.wolkenkit.live('groups', { where: { sportId: this.args.sport.id } });
-			this.instruments = await this.wolkenkit.live('instruments', { where: { sportId: this.args.sport.id } });
-			this.firstRun = false;
-		}
+		this.groups = await this.wolkenkit.live('groups', { where: { sportId: this.args.sport.id } });
+		this.instruments = await this.wolkenkit.live('instruments', { where: { sportId: this.args.sport.id } });
 	}
 }

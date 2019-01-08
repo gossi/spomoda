@@ -7,7 +7,7 @@ interface RadioGroupArgs {
 
 export default class RadioGroupComponent extends SparklesComponent<RadioGroupArgs> {
 	change(value: any) {
-		if (this.args.changed) {
+		if (this.args.value !== value && this.args.changed) {
 			this.args.changed(value);
 		}
 	}
