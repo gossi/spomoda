@@ -1,4 +1,4 @@
-import { service } from '@ember-decorators/service';
+import { inject as service } from '@ember-decorators/service';
 import Instrument from '@spomoda/client/src/data/models/instrument';
 import Sport from '@spomoda/client/src/data/models/sport';
 import WolkenkitService from '@spomoda/client/src/services/wolkenkit';
@@ -18,12 +18,6 @@ export default class InstrumentsComponent extends SparklesComponent<InstrumentsA
 	@tracked selected?: Instrument | null;
 	@tracked task?: Task;
 	deleting?: string;
-
-	async didInsertElement() {
-		if (!this.instruments) {
-			this.instruments = await this.wolkenkit.live('instruments', { where: { sportId: this.args.sport.id } });
-		}
-	}
 
 	add() {
 		this.task = this.selected === null ?  undefined : this.addTask;

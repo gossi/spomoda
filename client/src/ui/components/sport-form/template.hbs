@@ -112,5 +112,5 @@
 	</section>
 
 	<Button onclick={{bind form.rollback}} disabled={{not form.model.isDirty}}>Reset</Button>
-	<Button type="submit" disabled={{or @task.isRunning (not form.model.isDirty)}}>{{t (if form.model.id 'actions.save' 'actions.suggest')}}</Button>
+	<form.submitButton>{{t (if form.model.id 'actions.save' 'actions.suggest')}}</form.submitButton>
 </ModelForm>

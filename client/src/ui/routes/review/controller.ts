@@ -1,4 +1,4 @@
-import { service } from '@ember-decorators/service';
+import { inject as service } from '@ember-decorators/service';
 import Controller from '@ember/controller';
 import WolkenkitService from '@spomoda/client/src/services/wolkenkit';
 import { task } from 'ember-concurrency-decorators';

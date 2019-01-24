@@ -1,4 +1,4 @@
-import { service } from '@ember-decorators/service';
+import { inject as service } from '@ember-decorators/service';
 import Changeset from 'ember-changeset';
 import IntlService from 'ember-intl/services/intl';
 import SparklesComponent, { tracked } from 'sparkles-component';

@@ -1,8 +1,8 @@
-import Controller from '@ember/controller';
-import { service } from '@ember-decorators/service';
-import WolkenkitService from '@spomoda/client/src/services/wolkenkit';
-import { reads } from '@ember-decorators/object/computed';
 import { computed } from '@ember-decorators/object';
+import { reads } from '@ember-decorators/object/computed';
+import { inject as service } from '@ember-decorators/service';
+import Controller from '@ember/controller';
+import WolkenkitService from '@spomoda/client/src/services/wolkenkit';
 
 export default class ApplicationController extends Controller {
 	@service wolkenkit!: WolkenkitService;

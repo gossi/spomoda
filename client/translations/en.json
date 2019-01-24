@@ -70,6 +70,13 @@
 	"skill": {
 		"add": "Add {skill}",
 		"type": "Type",
+		"parents": "Parents",
+		"children": "Children",
+		"parts": "Parts",
+		"part-of": "Part of",
+		"multiple": "Multiple",
+		"multiplier": "Multiplier",
+		"multiple-of": "Multiple of",
 		"form": {
 			"informative": "Informative",
 			"slug.placeholder": "Leave empty for auto-generation",

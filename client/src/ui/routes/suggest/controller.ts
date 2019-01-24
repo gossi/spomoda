@@ -1,4 +1,4 @@
-import { service } from '@ember-decorators/service';
+import { inject as service } from '@ember-decorators/service';
 import Controller from '@ember/controller';
 import Sport from '@spomoda/client/src/data/models/sport';
 import WolkenkitService from '@spomoda/client/src/services/wolkenkit';

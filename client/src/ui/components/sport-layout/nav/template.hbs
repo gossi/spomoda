@@ -2,7 +2,7 @@
 	{{#if @sport.featureInstruments}}
 	<h3>{{@sport.instrumentPluralLabel}}</h3>
 	<ul>
-		{{#each this.instruments as |instrument|}}
+		{{#each @sport.instruments as |instrument|}}
 		<li>{{instrument.title}}</li>
 		{{/each}}
 	</ul>
@@ -11,7 +11,7 @@
 
 	<h3>{{@sport.groupPluralLabel}}</h3>
 	<ul>
-		{{#each this.groups as |group|}}
+		{{#each @sport.groups as |group|}}
 		<li>{{group.title}}</li>
 		{{/each}}
 	</ul>

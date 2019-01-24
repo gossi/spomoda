@@ -1,4 +1,4 @@
-import { service } from '@ember-decorators/service';
+import { inject as service } from '@ember-decorators/service';
 import Position from '@spomoda/client/src/data/models/position';
 import Sport from '@spomoda/client/src/data/models/sport';
 import WolkenkitService from '@spomoda/client/src/services/wolkenkit';
@@ -14,16 +14,10 @@ interface PositionsArgs {
 export default class PositionsComponent extends SparklesComponent<PositionsArgs> {
 	@service wolkenkit!: WolkenkitService;
 
-	@tracked positions!: Position[];
+	// @tracked positions!: Position[];
 	@tracked selected?: Position | null;
 	@tracked task?: Task;
 	deleting?: string;
-
-	async didInsertElement() {
-		if (!this.positions) {
-			this.positions = await this.wolkenkit.live('positions', { where: { sportId: this.args.sport.id } });
-		}
-	}
 
 	add() {
 		this.task = this.selected === null ?  undefined : this.addTask;

@@ -1,4 +1,4 @@
-import { service } from '@ember-decorators/service';
+import { inject as service } from '@ember-decorators/service';
 import Group from '@spomoda/client/src/data/models/group';
 import Sport from '@spomoda/client/src/data/models/sport';
 import WolkenkitService from '@spomoda/client/src/services/wolkenkit';
@@ -14,16 +14,9 @@ interface GroupsArgs {
 export default class GroupsComponent extends SparklesComponent<GroupsArgs> {
 	@service wolkenkit!: WolkenkitService;
 
-	@tracked groups!: Group[];
-	@tracked selected?: Group | null;
+	@tracked selected?: Group | null;
 	@tracked task?: Task;
 	deleting?: string;
-
-	async didInsertElement() {
-		if (!this.groups) {
-			this.groups = await this.wolkenkit.live('groups', { where: { sportId: this.args.sport.id } });
-		}
-	}
 
 	add() {
 		this.task = this.selected === null ?  undefined : this.addTask;
@@ -50,7 +43,7 @@ export default class GroupsComponent extends SparklesComponent<GroupsArgs> {
 			return;
 		}
 
-		yield this.wolkenkit.command('sport.group.add', 'added', Object.assign({sportId: this.args.sport.id}, model.change));
+		yield this.wolkenkit.command('sport.group.add', 'added', { sportId: this.args.sport.id, ...model.change });
 		this.task = undefined;
 		this.selected = undefined;
 		return true;

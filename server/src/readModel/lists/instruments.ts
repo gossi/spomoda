@@ -6,7 +6,7 @@ export const fields: Fields = {
 	slug: { initialState: '' },
 	description: { initialState: '' },
 	type: { initialState: undefined },
-	skills: { initialState: [] }
+	skillIds: { initialState: [] }
 };
 
 export const projections: Projections = {

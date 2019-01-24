@@ -1,7 +1,7 @@
 <FormGroup @label={{@label}} @description={{@description}} @error={{@error}} @id={{this.id}} ...attributes as |id|>
 	<Input
 		@id={{id}}
-		@type={{this.type}}
+		@type={{@type}}
 		@value={{@value}}
 		@placeholder={{@placeholder}}
 		@changed={{action (optional @changed)}}

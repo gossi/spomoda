@@ -15,9 +15,9 @@ export const initialState: InitialState = {
 			remove: { forAuthenticated: true }
 		},
 		events: {
-			added: { forAuthenticated: true },
-			edited: { forAuthenticated: true },
-			removed: { forAuthenticated: true }
+			added: { forPublic: true, forAuthenticated: true },
+			edited: { forPublic: true, forAuthenticated: true },
+			removed: { forPublic: true, forAuthenticated: true }
 		}
 	}
 };

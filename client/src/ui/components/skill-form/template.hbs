@@ -26,7 +26,7 @@
 				@allowClear={{true}}
 				@searchField='title'
 				@selected={{form.model.groups}}
-				@options={{sort-by 'title' this.groups}}
+				@options={{sort-by 'title' @sport.groups}}
 				@onchange={{action (mut form.model.groups)}}
 				as |group|>
 				{{group.title}}
@@ -43,14 +43,76 @@
 			@changed={{action (mut form.model.type)}}
 			as |radio|>
 
-			{{#each this.types as |type|}}
+			{{#each-in this.types as |type|}}
 				<radio.option
 					@value={{type}}
 					@label={{t (concat 'skill.form.' type)}}
 					@description={{t (concat 'skill.form.' type '.description')}}/>
-			{{/each}}
-
+			{{/each-in}}
 		</RadioGroup>
+
+		{{log this.options}}
+
+		{{#if (or (eq form.model.type this.types.skill) (eq form.model.type this.types.multiple))}}
+		<FormGroup @label={{t 'skill.parents'}} as |id|>
+			<PowerSelectMultiple
+				@id={{id}}
+				@options={{this.options}}
+				@onchange={{action this.void}}
+				as |skill|>
+				{{skill.name}}
+			</PowerSelectMultiple>
+		</FormGroup>
+		{{/if}}
+
+		{{#if (or (eq form.model.type this.types.skill) (eq form.model.type this.types.multiple))}}
+		<FormGroup @label={{t 'skill.parents'}} as |id|>
+			<PowerSelectMultiple
+				@id={{id}}
+				@searchField='name'
+				@allowClear={{true}}
+				@selected={{form.model.relationship.parents}}
+				@options={{this.options}}
+				@onchange={{action (mut form.model.relationship.parents)}}
+				as |skill|>
+				{{skill.name}}
+			</PowerSelectMultiple>
+		</FormGroup>
+		{{/if}}
+
+		{{#if (eq form.model.type this.types.composite)}}
+		<FormGroup @label={{t 'skill.parts'}} as |id|>
+			<PowerSelectMultiple
+				@id={{id}}
+				@searchField='name'
+				@allowClear={{true}}
+				@selected={{form.model.relationship.parts}}
+				@options={{this.options}}
+				@onchange={{action (mut form.model.relationship.parts)}}
+				as |skill|>
+				{{skill.name}}
+			</PowerSelectMultiple>
+		</FormGroup>
+		{{/if}}
+
+		{{#if (eq form.model.type "skill")}}
+		<FormGroup @label={{t 'skill.multiple-of'}} as |id|>
+			<PowerSelect
+				@id={{id}}
+				@searchFile='name'
+				@allowClear={{true}}
+				@options={{this.multiples}}
+				@selected={{form.model.relationship.multipleOf}}
+				@onchange={{action (mut form.model.relationship.multipleOf)}}
+				as |skill|>
+				{{skill.name}}
+			</PowerSelect>
+		</FormGroup>
+
+			{{#if form.model.relationship.multipleOf}}
+			<form.input @name='relationship.multiplier' @label={{concat (t 'skill.multiplier') '[°]'}} />
+			{{/if}}
+		{{/if}}
 	</section>
 
 	<Button type="submit" disabled={{or @task.isRunning (not form.model.isDirty)}}>{{t 'actions.save'}}</Button>

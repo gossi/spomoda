@@ -1,4 +1,4 @@
-import { service } from '@ember-decorators/service';
+import { inject as service } from '@ember-decorators/service';
 import Route from '@ember/routing/route';
 import WolkenkitService from '@spomoda/client/src/services/wolkenkit';
 

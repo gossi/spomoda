@@ -5,7 +5,7 @@
 	<div>
 		<span local-class="item" class={{if (eq this.selected null) (local-class 'selected')}} onclick={{bind this.add}}><FaLight @icon='plus'/> {{t 'sport.manage.new' thing=@sport.instrumentLabel}}</span>
 		<ul local-class="list">
-			{{#each this.instruments as |instrument|}}
+			{{#each @sport.instruments as |instrument|}}
 				<li local-class="item" class={{if (eq instrument this.selected) (local-class 'selected')}} onclick={{bind this.select instrument}}>
 					{{instrument.title}}
 					<span local-class="delete" onclick={{bind this.remove instrument.id}}><FaLight @icon='trash-alt'/></span>

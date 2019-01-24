@@ -1,10 +1,12 @@
+import Model from 'ember-wolkenkit/src/data/models/model';
+
 export enum InstrumentType {
 	MANIPULATIVE = 'manipulative',
 	SUPPORTIVE = 'supportive',
 	MOVENDUM = 'movendum'
 }
 
-export default interface Instrument {
+export default class Instrument extends Model {
 	id: string;
 	sportId: string;
 	title: string;
