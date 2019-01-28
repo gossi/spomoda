@@ -1,3 +1,4 @@
+// tslint: https://github.com/typescript-eslint/typescript-eslint/issues/101
 module.exports = {
 	root: true,
 	parser: '@typescript-eslint/parser',
@@ -42,7 +43,7 @@ module.exports = {
 				'index.js',
 				'testem.js',
 				'blueprints/*/index.js',
-				'config/**/*.js',
+				'config/*.js',
 				'tests/dummy/config/**/*.js'
 			],
 			parser: 'babel-eslint',

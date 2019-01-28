@@ -2,7 +2,7 @@ import buildResolverConfig from 'ember-resolver/ember-config';
 import Resolver from 'ember-resolver/resolvers/fallback';
 import config from '../config/environment';
 
-let moduleConfig = buildResolverConfig(config.modulePrefix);
+const moduleConfig = buildResolverConfig(config.modulePrefix);
 /*
  * If your application has custom types and collections, modify moduleConfig here
  * to add support for them.
