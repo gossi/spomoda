@@ -1,0 +1,11 @@
+<FormGroup @label={{@label}} @description={{@description}} @error={{@error}}
+...attributes as |id|>
+	<Textfield
+		@id={{id}}
+		@type={{this.type}}
+		@value={{@value}}
+		@changed={{action (optional @changed)}}
+		placeholder={{@placeholder}}
+		local-class="input"
+	/>
+</FormGroup>

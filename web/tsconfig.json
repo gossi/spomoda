@@ -1,0 +1,45 @@
+{
+	"compilerOptions": {
+		"target": "esnext",
+		"allowJs": true,
+		"moduleResolution": "node",
+		"isolatedModules": true,
+		"experimentalDecorators": true,
+		"allowSyntheticDefaultImports": true,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noEmitOnError": false,
+		"noEmit": true,
+		"inlineSourceMap": true,
+		"inlineSources": true,
+		"baseUrl": ".",
+		"module": "esnext",
+		"paths": {
+			"@spomoda/web/tests/*": [
+				"tests/*"
+			],
+			"@spomoda/web/src/*": [
+				"src/*"
+			],
+			"ember-wolkenkit": [
+				"node_modules/ember-wolkenkit/*"
+			],
+			"*": [
+				"types/*"
+			],
+		}
+	},
+	"include": [
+		"src/**/*",
+		"tests/**/*",
+		"types/**/*",
+		"node_modules/ember-wolkenkit/*"
+	]
+}

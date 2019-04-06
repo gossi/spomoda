@@ -10,7 +10,7 @@
 		"clean": "rm -rf server",
 		"build": "babel src --out-dir server --extensions '.ts,.js'",
 		"lint": "yarn tslint --project .",
-		"setup": "yarn build; cp -R res/* server/",
+		"setup": "yarn build; mkdir server/flows; cp -R res/* server/",
 		"start": "yarn setup; wolkenkit start; yarn clean",
 		"reload": "yarn setup; wolkenkit reload; yarn clean"
 	},

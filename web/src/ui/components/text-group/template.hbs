@@ -1,0 +1,10 @@
+<FormGroup @label={{@label}} @description={{@description}} @error={{@error}} ...attributes as |id|>
+	<Text
+		@id={{id}}
+		@type={{@type}}
+		@value={{@value}}
+		@change={{action (optional @change)}}
+		placeholder={{@placeholder}}
+		local-class="input"
+	/>
+</FormGroup>

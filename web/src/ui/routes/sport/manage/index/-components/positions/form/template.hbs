@@ -1,0 +1,13 @@
+<ModelForm @model={{@position}} @task={{@task}} as |form|>
+	<form.Text
+		@name='title'
+		@label={{t 'terms.title'}}
+	/>
+
+	<form.Textfield
+		@name='description'
+		@label={{t 'terms.description'}}
+	/>
+
+	<form.SubmitButton>{{t (if form.model.id 'actions.save' 'actions.add')}}</form.SubmitButton>
+</ModelForm>

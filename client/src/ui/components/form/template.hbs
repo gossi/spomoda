@@ -1,7 +1,0 @@
-<form onsubmit={{bind this.submit}} ...attributes>
-	{{yield (hash
-		model=this.model
-		rollback=this.rollback
-		submitButton=(component 'btn' type="submit" disabled=(or @task.isRunning (not this.model.isDirty)))
-	)}}
-</form>

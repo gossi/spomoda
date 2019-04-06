@@ -1,0 +1,7 @@
+<div local-class="layout" ...attributes>
+	{{yield (hash
+		Header=(component 'area' class=(local-class "area-header"))
+		Hero=(component 'area' class=(local-class "area-hero"))
+		Main=(component 'area' class=(local-class "area-main"))
+	)}}
+</div>

@@ -48,16 +48,16 @@ export const initialState: InitialState = {
 		},
 		events: {
 			suggested: {
-				forPublic: true, forAuthenticated: true
+				forPublic: true, forAuthenticated: false
 			},
 			approved: {
-				forPublic: true, forAuthenticated: true
+				forPublic: true, forAuthenticated: false
 			},
 			rejected: {
-				forPublic: true, forAuthenticated: true
+				forPublic: true, forAuthenticated: false
 			},
 			edited: {
-				forPublic: true, forAuthenticated: true
+				forPublic: true, forAuthenticated: false
 			}
 		}
 	}
