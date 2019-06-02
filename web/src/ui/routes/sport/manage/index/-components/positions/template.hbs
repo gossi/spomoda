@@ -1,16 +1,16 @@
 {{#if @sport.featureComposition}}
 <h3>{{@sport.positionPluralLabel}}</h3>
 
-{{log @sport}}
-
 <div local-class="select-details">
 	<div>
-		<span local-class="item" class={{if (eq this.selected null) (local-class 'selected')}} onclick={{bind this.add}}><FaLight @icon='plus'/> {{t 'sport.manage.new' thing=@sport.positionLabel}}</span>
+		<span local-class="item {{if (eq this.selected null) 'selected'}}" {{on "click" this.add}}>
+			<FaLight @icon='plus'/> {{t 'sport.manage.new' thing=@sport.positionLabel}}
+		</span>
 		<ul local-class="list">
 			{{#each @sport.positions as |position|}}
-				<li local-class="item" class={{if (eq position this.selected) (local-class 'selected')}} onmousedown={{bind this.select position}}>
+				<li local-class="item {{if (eq position this.selected) 'selected'}}" {{on "click" (fn this.select position)}}>
 					{{position.title}}
-					<span local-class="delete" onclick={{bind this.remove position.id}}><FaLight @icon='trash-alt'/></span>
+					<span local-class="delete" {{on "click" (fn this.remove position.id)}}><FaLight @icon='trash-alt'/></span>
 				</li>
 			{{/each}}
 		</ul>

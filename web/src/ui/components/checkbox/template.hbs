@@ -1,5 +1,5 @@
 <label local-class="label">
-	<input type="checkbox" checked={{@value}} onchange={{bind this.change}}>
+	<input type="checkbox" checked={{@checked}} {{on "change" this.change}}>
 
 	{{@label}}
 

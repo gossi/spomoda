@@ -11,7 +11,11 @@
 
 		<div local-class="user">
 			{{#if this.session.isAuthenticated}}
-				<span>{{this.session.profile.name}}<br><small {{on "click" this.logout}}>logout</small></span> <Avatar @src={{this.session.profile.picture}} local-class="avatar"/>
+				<span>
+					{{this.session.profile.name}}<br>
+					<small {{on "click" this.logout}}>logout</small>
+				</span>
+				<Avatar @src={{this.session.profile.picture}} local-class="avatar"/>
 			{{else}}
 				<a {{on "click" this.login}}>Login</a>
 			{{/if}}

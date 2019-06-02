@@ -1,1 +1,8 @@
-<button type="submit" ...attributes>{{yield}}</button>
+<button
+	{{!-- type="button" --}}
+	...attributes
+	{{on "click" this.handleClick}}
+	{{on "keydown" this.handleKeyDown}}
+>
+	{{yield}}
+</button>

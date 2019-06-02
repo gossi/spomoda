@@ -5,8 +5,8 @@ import WolkenkitService from 'ember-wolkenkit/src/services/wolkenkit';
 import wolkenkit from 'wolkenkit-client';
 
 export default class ApplicationRoute extends Route {
-	@service wolkenkit!: WolkenkitService;
 	@service intl!: IntlService;
+	@service wolkenkit!: WolkenkitService;
 
 	async beforeModel() {
 		await this.wolkenkit.connect({

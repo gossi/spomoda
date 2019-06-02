@@ -1,16 +1,16 @@
 import Component from '@glimmer/component';
+import { action } from '@ember/object';
 
 interface CheckboxArgs {
-	value: any;
-	changed: (value: any) => void;
+	checked: boolean;
+	change: (checked: boolean) => void;
 }
 
-export default class CheckboxComponent extends Component {
-	args: CheckboxArgs = this.args;
-
+export default class CheckboxComponent extends Component<CheckboxArgs> {
+	@action
 	change(e: Event) {
-		if (e.target && this.args.changed) {
-			this.args.changed((e.target as HTMLInputElement).checked);
+		if (e.target && this.args.change) {
+			this.args.change((e.target as HTMLInputElement).checked);
 		}
 	}
 }

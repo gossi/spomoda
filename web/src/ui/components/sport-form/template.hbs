@@ -7,34 +7,36 @@
 
 			<form.Text
 				@name='title'
-				@label={{t 'terms.title'}} />
+				@label={{t 'terms.title'}}
+			/>
 
 			<form.Text
 				@name='sortTitle'
 				@label={{t 'sport.form.sortTitle'}}
-				@placeholder={{t 'sport.form.sortTitle.placeholder'}} />
+				@placeholder={{t 'sport.form.sortTitle.placeholder'}}
+			/>
 
-			<CheckboxGroup
-				@label='Features'
-				as |group|>
-
-				<group.checkbox
+			<CheckboxGroup @label='Features' as |group|>
+				<group.Checkbox
 					@label={{t 'sport.form.features.instruments'}}
 					@description={{t 'sport.form.features.instruments.description'}}
-					@value={{form.model.featureInstruments}}
-					@changed={{action (mut form.model.featureInstruments)}} />
+					@checked={{form.model.featureInstruments}}
+					@change={{action (mut form.model.featureInstruments)}}
+				/>
 
-				<group.checkbox
+				<group.Checkbox
 					@label={{t 'sport.form.features.composition'}}
 					@description={{t 'sport.form.features.composition.description'}}
-					@value={{form.model.featureComposition}}
-					@changed={{action (mut form.model.featureComposition)}} />
+					@checked={{form.model.featureComposition}}
+					@change={{action (mut form.model.featureComposition)}}
+				/>
 
-				<group.checkbox
+				<group.Checkbox
 					@label={{t 'sport.form.features.apparatuses'}}
 					@description={{t 'sport.form.features.apparatuses.description'}}
-					@value={{form.model.featureApparatuses}}
-					@changed={{action (mut form.model.featureApparatuses)}} />
+					@checked={{form.model.featureApparatuses}}
+					@change={{action (mut form.model.featureApparatuses)}}
+				/>
 			</CheckboxGroup>
 		</div>
 	</section>
@@ -48,29 +50,34 @@
 			<form.Text
 				@name='athleteLabel'
 				@label={{t 'terms.athlete'}}
-				@description={{t 'sport.form.athlete.description'}} />
+				@description={{t 'sport.form.athlete.description'}}
+			/>
 		</div>
 
 		<div>
 			<form.Text
 				@name='skillLabel'
 				@label={{t 'sport.form.skill'}}
-				@description={{t 'sport.form.skill.description'}} />
+				@description={{t 'sport.form.skill.description'}}
+			/>
 
 			<form.Text
 				@name='skillPluralLabel'
-				@label={{t 'sport.form.skill-plural'}} />
+				@label={{t 'sport.form.skill-plural'}}
+			/>
 		</div>
 
 		<div>
 			<form.Text
 				@name='groupLabel'
 				@label={{t 'sport.form.group'}}
-				@description={{t 'sport.form.group.description'}} />
+				@description={{t 'sport.form.group.description'}}
+			/>
 
 			<form.Text
 				@name='groupPluralLabel'
-				@label={{t 'sport.form.group-plural'}} />
+				@label={{t 'sport.form.group-plural'}}
+			/>
 		</div>
 
 		{{#if form.model.featureInstruments}}
@@ -78,11 +85,13 @@
 			<form.Text
 				@name='instrumentLabel'
 				@label={{t 'sport.form.instrument'}}
-				@description={{t 'sport.form.instrument.description'}} />
+				@description={{t 'sport.form.instrument.description'}}
+			/>
 
 			<form.Text
 				@name='instrumentPluralLabel'
-				@label={{t 'sport.form.instrument-plural'}} />
+				@label={{t 'sport.form.instrument-plural'}}
+			/>
 		</div>
 		{{/if}}
 
@@ -91,26 +100,30 @@
 			<form.Text
 				@name='positionLabel'
 				@label={{t 'sport.form.position'}}
-				@description={{t 'sport.form.position.description'}} />
+				@description={{t 'sport.form.position.description'}}
+			/>
 
 			<form.Text
 				@name='positionPluralLabel'
-				@label={{t 'sport.form.position-plural'}} />
+				@label={{t 'sport.form.position-plural'}}
+			/>
 		</div>
 
 		<div>
 			<form.Text
 				@name='transitionLabel'
 				@label={{t 'sport.form.transition'}}
-				@description={{t 'sport.form.transition.description'}} />
+				@description={{t 'sport.form.transition.description'}}
+			/>
 
 			<form.Text
 				@name='transitionPluralLabel'
-				@label={{t 'sport.form.transition-plural'}} />
+				@label={{t 'sport.form.transition-plural'}}
+			/>
 		</div>
 		{{/if}}
 	</section>
 
-	<Button onclick={{bind form.rollback}} disabled={{not form.model.isDirty}}>Reset</Button>
+	<form.ResetButton>Reset</form.ResetButton>
 	<form.SubmitButton>{{t (if form.model.id 'actions.save' 'actions.suggest')}}</form.SubmitButton>
 </ModelForm>

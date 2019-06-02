@@ -12,8 +12,8 @@
 	<RadioGroup
 		@label={{t 'instrument.form.type'}}
 		@value={{form.model.type}}
-		@changed={{action (mut form.model.type)}}
-		as |radio|>
+		@change={{action (mut form.model.type)}}
+	as |radio|>
 
 		{{#each this.types as |type|}}
 			<radio.Option

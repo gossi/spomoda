@@ -1,17 +1,23 @@
-import Session from 'ember-simple-auth/services/session';
 import { inject as service } from '@ember/service';
-import WokkenkitService from 'ember-wolkenkit/src/services/wolkenkit';
+import Session from 'ember-simple-auth/services/session';
+import WolkenkitService from 'ember-wolkenkit/src/services/wolkenkit';
 
 export default class SessionService extends Session {
-	@service wolkenkit!: WokkenkitService;
+	@service wolkenkit!: WolkenkitService;
 
-	init() {
+	async init() {
 		super.init();
 
 		// workaround, until wolkenkit v4.0
 		this.session.authenticator = 'authenticator:wolkenkit';
 		this.session._updateStore();
-		this.session.restore();
+		await this.session.restore();
+
+		// retry an attempated transition
+		if (this.attemptedTransition) {
+			this.attemptedTransition.retry();
+			this.attemptedTransition = null;
+		}
 	}
 
 	get profile(): object {

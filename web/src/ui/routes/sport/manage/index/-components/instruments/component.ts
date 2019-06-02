@@ -7,6 +7,7 @@ import WolkenkitService from '@spomoda/web/src/services/wolkenkit';
 import Changeset from 'ember-changeset';
 import Task from 'ember-concurrency/task';
 import { task } from 'ember-concurrency';
+import { action } from '@ember/object';
 
 interface InstrumentsArgs {
 	sport: Sport;
@@ -20,11 +21,13 @@ export default class InstrumentsComponent extends Component<InstrumentsArgs> {
 	@tracked task?: Task;
 	deleting?: string;
 
+	@action
 	add() {
 		this.task = this.selected === null ?  undefined : this.addTask;
 		this.selected = this.selected === null ? undefined : null;
 	}
 
+	@action
 	select(instrument: Instrument) {
 		if (this.deleting === instrument.id) {
 			return;
@@ -34,6 +37,7 @@ export default class InstrumentsComponent extends Component<InstrumentsArgs> {
 		this.selected = this.selected === instrument ? undefined : instrument;
 	}
 
+	@action
 	remove(id: string) {
 		this.deleting = id;
 		this.removeTask.perform(id);

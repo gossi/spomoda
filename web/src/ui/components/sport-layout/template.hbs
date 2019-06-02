@@ -13,7 +13,7 @@
 		</nav>
 	</layout.Header>
 
-	<layout.Main class={{if @nav (local-class 'split')}}>
+	<layout.Main local-class={{if @nav 'split'}}>
 		<div local-class="main">
 			{{yield}}
 		</div>

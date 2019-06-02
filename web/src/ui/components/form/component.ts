@@ -25,6 +25,12 @@ export default class FormComponent<T extends object> extends Component<FormArgs>
 	}
 
 	@action
+	reset(e: Event) {
+		e.preventDefault();
+		this.rollback();
+	}
+
+	@action
 	submit(e: Event) {
 		e.preventDefault();
 

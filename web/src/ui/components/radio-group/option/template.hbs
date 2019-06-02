@@ -1,5 +1,9 @@
 <label local-class="label">
-	<input type="radio" checked={{eq @value @group.args.value}} onchange={{bind this.change}}>
+	<input
+		type="radio"
+		checked={{eq @value @group.args.value}}
+		{{on "change" (fn @group.change @value)}}
+	>
 
 	{{@label}}
 

@@ -2,12 +2,14 @@
 
 <div local-class="select-details">
 	<div>
-		<span local-class="item" class={{if (eq this.selected null) (local-class 'selected')}} onclick={{bind this.add}}><FaLight @icon='plus'/> {{t 'sport.manage.new' thing=@sport.groupLabel}}</span>
+		<span local-class="item {{if (eq this.selected null) 'selected'}}" {{on "click" this.add}}>
+			<FaLight @icon='plus'/> {{t 'sport.manage.new' thing=@sport.groupLabel}}
+		</span>
 		<ul local-class="list">
 			{{#each @sport.groups as |group|}}
-				<li local-class="item" class={{if (eq group this.selected) (local-class 'selected')}} onclick={{bind this.select group}}>
+				<li local-class="item {{if (eq group this.selected) 'selected'}}" {{on "click" (fn this.select group)}}>
 					{{group.title}}
-					<span local-class="delete" onclick={{bind this.remove group.id}}><FaLight @icon='trash-alt'/></span>
+					<span local-class="delete" {{on "click" (fn this.remove group.id)}}><FaLight @icon='trash-alt'/></span>
 				</li>
 			{{/each}}
 		</ul>

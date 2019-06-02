@@ -7,6 +7,7 @@ import Task from 'ember-concurrency/task';
 import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 import { task } from 'ember-concurrency';
+import { action } from '@ember/object';
 
 interface PositionsArgs {
 	sport: Sport;
@@ -21,11 +22,13 @@ export default class PositionsComponent extends Component<PositionsArgs> {
 	@tracked task?: Task;
 	deleting?: string;
 
+	@action
 	add() {
 		this.task = this.selected === null ?  undefined : this.addTask;
 		this.selected = this.selected === null ? undefined : null;
 	}
 
+	@action
 	select(position: Position) {
 		if (position.id === this.deleting) {
 			return;
@@ -35,6 +38,7 @@ export default class PositionsComponent extends Component<PositionsArgs> {
 		this.selected = this.selected === position ? undefined : position;
 	}
 
+	@action
 	remove(id: string) {
 		this.deleting = id;
 		this.removeTask.perform(id);

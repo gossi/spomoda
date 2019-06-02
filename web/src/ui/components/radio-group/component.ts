@@ -1,16 +1,16 @@
 import Component from '@glimmer/component';
+import { action } from '@ember/object';
 
 interface RadioGroupArgs {
 	value: any;
-	changed: (value: any) => void;
+	change: (value: any) => void;
 }
 
-export default class RadioGroupComponent extends Component {
-	args: RadioGroupArgs = this.args;
-
+export default class RadioGroupComponent extends Component<RadioGroupArgs> {
+	@action
 	change(value: any) {
-		if (this.args.value !== value && this.args.changed) {
-			this.args.changed(value);
+		if (this.args.value !== value && this.args.change) {
+			this.args.change(value);
 		}
 	}
 }

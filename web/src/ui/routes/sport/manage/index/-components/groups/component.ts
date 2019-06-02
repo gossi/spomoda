@@ -7,6 +7,7 @@ import WolkenkitService from '@spomoda/web/src/services/wolkenkit';
 import Changeset from 'ember-changeset';
 import { task } from 'ember-concurrency';
 import Task from 'ember-concurrency/task';
+import { action } from '@ember/object';
 
 interface GroupsArgs {
 	sport: Sport;
@@ -20,11 +21,13 @@ export default class GroupsComponent extends Component<GroupsArgs> {
 	@tracked task?: Task;
 	deleting?: string;
 
+	@action
 	add() {
 		this.task = this.selected === null ?  undefined : this.addTask;
 		this.selected = this.selected === null ? undefined : null;
 	}
 
+	@action
 	select(group: Group) {
 		if (this.deleting === group.id) {
 			return;
@@ -34,6 +37,7 @@ export default class GroupsComponent extends Component<GroupsArgs> {
 		this.selected = this.selected === group ? undefined : group;
 	}
 
+	@action
 	remove(id: string) {
 		this.deleting = id;
 		this.removeTask.perform(id);

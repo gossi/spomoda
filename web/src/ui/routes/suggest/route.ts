@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
-import { authenticatedRoute } from '@spomoda/web/src/decorators/authenticated-route';
+import { AuthenticatedRoute } from '@spomoda/web/src/decorators/authenticated-route';
 
-@authenticatedRoute
+@AuthenticatedRoute
 export default class SuggestRoute extends Route {
 
 }

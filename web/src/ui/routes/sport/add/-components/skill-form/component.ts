@@ -31,7 +31,7 @@ export default class SkillFormComponent extends Component<SkillFormArgs> {
 		[SkillType.MULTIPLE]: SkillType.MULTIPLE
 	};
 
-	// Workaround (see below)
+	// --- Workaround start (Intended Implementation below)
 	@tracked multiples?: Skill[];
 	@tracked options?: Skill[];
 
@@ -42,10 +42,6 @@ export default class SkillFormComponent extends Component<SkillFormArgs> {
 		this.setOptions();
 	}
 
-	didUpdate() {
-		this.setOptions();
-	}
-
 	setOptions() {
 		if (this.latestSkills !== this.args.sport.skills || !this.options || !this.multiples) {
 			this.options = this.args.sport.skills.filter(skill => skill !== this.skill).sortBy('name');
@@ -53,6 +49,8 @@ export default class SkillFormComponent extends Component<SkillFormArgs> {
 			this.latestSkills = this.args.sport.skills;
 		}
 	}
+
+	// --- Workaround end
 
 	// Intended Implementation
 	// Related issue: https://github.com/cibernox/ember-power-select/issues/1196
