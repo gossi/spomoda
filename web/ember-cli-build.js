@@ -26,6 +26,8 @@ module.exports = function (defaults) {
 		}
 	});
 
-	// use embroider here once MU is supported
+	// use embroider here
+	// const Webpack = require('@embroider/webpack').Webpack;
+	// return require('@embroider/compat').compatBuild(app, Webpack);
 	return app.toTree();
 };

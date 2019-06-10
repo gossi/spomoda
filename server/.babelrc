@@ -1,6 +1,13 @@
 {
 	"presets": [
 		"@babel/preset-typescript",
-		"@babel/env"
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"browsers": "last 1 chrome versions"
+				}
+			}
+		]
 	]
 }

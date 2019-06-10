@@ -1,26 +1,42 @@
 import { Fields, Projections } from 'wolkenkit/readModel';
 
 export const fields: Fields = {
-	sportId: { initialState: undefined },
 	title: { initialState: '' },
 	slug: { initialState: '' },
 	description: { initialState: '' },
-	skillIds: { initialState: [] }
+	sportIds: { initialState: [] }
 };
 
 export const projections: Projections = {
-	'sport.position.added'(positions, event) {
+	'human.position.created'(positions, event) {
 		positions.add(event.data);
 	},
-	'sport.position.edited'(positions, event) {
+	'human.position.edited'(positions, event) {
 		positions.update({
 			where: { id: event.aggregate.id },
 			set: event.data
 		});
 	},
-	'sport.position.removed'(positions, event) {
+	'human.position.deleted'(positions, event) {
 		positions.remove({
 			where: { id: event.aggregate.id }
 		});
+	},
+	async 'sport.sport.positionAttached'(positions, event, {app, logger}) {
+		const position = await app.lists.positions.readOne({
+			where: { id: event.data.id }
+		});
+
+		logger.info('POSITIONS, attach sport', position);
+
+		positions.update({
+			where: { id: event.data.id },
+			set: {
+				sportIds: [...position.sportIds, event.aggregate.id]
+			}
+		});
+	},
+	'sport.sport.positionDetached'(positions, event) {
+
 	}
 };

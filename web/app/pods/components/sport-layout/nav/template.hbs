@@ -1,0 +1,17 @@
+<div local-class="sport-nav" ...attributes>
+	{{!-- {{#if @sport.features.instruments}}
+	<h3>{{@sport.labels.instruments}}</h3>
+	<ul>
+		{{#each @sport.instruments as |instrument|}}
+		<li>{{instrument.title}}</li>
+		{{/each}}
+	</ul>
+	{{/if}} --}}
+
+	<h3>{{@sport.labels.groups}}</h3>
+	<ul>
+		{{#each @sport.groups as |group|}}
+		<li>{{group.title}}</li>
+		{{/each}}
+	</ul>
+</div>

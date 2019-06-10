@@ -1,27 +1,39 @@
 import { Fields, Projections } from 'wolkenkit/readModel';
 
 export const fields: Fields = {
-	sportId: { initialState: undefined },
 	title: { initialState: '' },
 	slug: { initialState: '' },
 	description: { initialState: '' },
 	type: { initialState: undefined },
+	sportIds: { initialState: [] },
 	skillIds: { initialState: [] }
 };
 
 export const projections: Projections = {
-	'sport.instrument.added'(instruments, event) {
+	'equipment.instrument.created'(instruments, event) {
 		instruments.add(event.data);
 	},
-	'sport.instrument.edited'(instruments, event) {
+	'equipment.instrument.edited'(instruments, event) {
 		instruments.update({
 			where: { id: event.aggregate.id },
 			set: event.data
 		});
 	},
-	'sport.instrument.removed'(instruments, event) {
+	'equipment.instrument.deleted'(instruments, event) {
 		instruments.remove({
 			where: { id: event.aggregate.id }
 		});
+	},
+	'sport.sport.instrumentAttached'(instruments, event) {
+
+	},
+	'sport.sport.instrumentDetached'(instruments, event) {
+
+	},
+	'skill.skill.instrumentAssigned'(instruments, event) {
+
+	},
+	'skill.skill.instrumentUnassigned'(instruments, event) {
+
 	}
 };

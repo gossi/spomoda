@@ -9,7 +9,7 @@ export const fields: Fields = {
 };
 
 export const projections: Projections = {
-	'sport.group.added'(groups, event) {
+	'sport.group.created'(groups, event) {
 		groups.add(event.data);
 	},
 	'sport.group.edited'(groups, event) {
@@ -18,7 +18,7 @@ export const projections: Projections = {
 			set: event.data
 		});
 	},
-	'sport.group.removed'(groups, event) {
+	'sport.group.deleted'(groups, event) {
 		groups.remove({
 			where: { id: event.aggregate.id }
 		});

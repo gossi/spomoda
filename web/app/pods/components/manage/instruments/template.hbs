@@ -1,0 +1,22 @@
+<h3>{{t 'terms.instruments'}}</h3>
+
+<div local-class="select-details">
+	<div>
+		<span local-class="item {{if this.adding 'selected'}}" {{on "click" this.add}}>
+			<FaLight @icon='plus'/> {{t 'manage.new' thing=(t 'terms.instrument')}}
+		</span>
+		<ul local-class="list">
+			{{#each @instruments as |instrument|}}
+				<li local-class="item {{if (eq instrument this.selected) 'selected'}}" {{on "click" (fn this.select instrument)}}>
+					{{instrument.title}}
+					<span local-class="delete" {{on "click" (fn this.remove instrument.id)}}><FaLight @icon='trash-alt'/></span>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+	<div>
+		{{#if this.selected}}
+		<Manage::Instruments::Form @instrument={{this.selected}} @task={{this.task}}/>
+		{{/if}}
+	</div>
+</div>

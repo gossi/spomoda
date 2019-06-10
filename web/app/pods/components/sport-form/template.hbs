@@ -1,0 +1,165 @@
+<ModelForm @model={{this.sport}} @task={{@task}} as |form|>
+	<section local-class="group">
+		<h3 local-class="legend">{{t 'sport.form.general'}}</h3>
+
+		<div local-class="full">
+			<p>{{t 'sport.form.general.description'}}</p>
+
+			<form.Text
+				@name='title'
+				@label={{t 'terms.title'}}
+			/>
+
+			<form.Text
+				@name='sortTitle'
+				@label={{t 'sport.form.sortTitle'}}
+				@placeholder={{t 'sport.form.sortTitle.placeholder'}}
+			/>
+
+			<CheckboxGroup @label='Features' as |group|>
+				<group.Checkbox
+					@label={{t 'sport.form.features.instruments'}}
+					@description={{t 'sport.form.features.instruments.description'}}
+					@checked={{form.model.features.instruments}}
+					{{!-- @change={{fn this.toggleInstrumentFeature form.model}} --}}
+					@change={{fn (mut form.model.features.instruments)}}
+				/>
+
+				{{#if form.model.features.instruments}}
+					<CheckboxGroup local-class="features-extended" as |instrument|>
+						<instrument.Checkbox
+							@label="required"
+							@checked={{form.model.features.config.instruments.required}}
+							{{!-- @change={{fn this.setInstrumentFeature
+							form.model "required"}} --}}
+							@change={{fn (mut form.model.features.config.instruments.required)}}
+						/>
+
+						<instrument.Checkbox
+							@label="choice"
+							@checked={{form.model.features.instruments.choice}}
+							@change={{fn this.setInstrumentFeature form.model "choice"}}
+						/>
+
+						{{log (changeset-get form.model "features.config.instruments.default")}}
+						<FormGroup @label="Default" as |id|>
+							<PowerSelect
+								@triggerId={{id}}
+								@allowClear={{true}}
+								@searchField="title"
+								@options={{this.instruments}}
+								{{!--
+								@selected={{form.model.features.config.instruments.default}}
+								--}}
+								@selected={{changeset-get form.model "features.config.instruments.default"}}
+								@onchange={{fn this.setInstrumentFeature form.model "default"}}
+							as |instrument|>
+								{{instrument.title}}
+							</PowerSelect>
+						</FormGroup>
+					</CheckboxGroup>
+				{{/if}}
+
+				<group.Checkbox
+					@label={{t 'sport.form.features.composition'}}
+					@description={{t 'sport.form.features.composition.description'}}
+					@checked={{form.model.features.composition}}
+					@change={{fn (mut form.model.features.composition)}}
+				/>
+
+				<group.Checkbox
+					@label={{t 'sport.form.features.apparatuses'}}
+					@description={{t 'sport.form.features.apparatuses.description'}}
+					@checked={{form.model.features.apparatuses}}
+					@change={{fn (mut form.model.features.apparatuses)}}
+				/>
+			</CheckboxGroup>
+		</div>
+	</section>
+
+	<section local-class="group">
+		<h3 local-class="legend">{{t 'sport.form.language'}}</h3>
+
+		<div local-class="full">
+			<p>{{t 'sport.form.language.description'}}</p>
+
+			<form.Text
+				@name='labels.athlete'
+				@label={{t 'terms.athlete'}}
+				@description={{t 'sport.form.athlete.description'}}
+			/>
+		</div>
+
+		<div>
+			<form.Text
+				@name='labels.skill'
+				@label={{t 'sport.form.skill'}}
+				@description={{t 'sport.form.skill.description'}}
+			/>
+
+			<form.Text
+				@name='labels.skills'
+				@label={{t 'sport.form.skill-plural'}}
+			/>
+		</div>
+
+		<div>
+			<form.Text
+				@name='labels.group'
+				@label={{t 'sport.form.group'}}
+				@description={{t 'sport.form.group.description'}}
+			/>
+
+			<form.Text
+				@name='labels.groups'
+				@label={{t 'sport.form.group-plural'}}
+			/>
+		</div>
+
+		{{#if form.model.features.instruments}}
+		<div local-class="full">
+			<form.Text
+				@name='labels.instrument'
+				@label={{t 'sport.form.instrument'}}
+				@description={{t 'sport.form.instrument.description'}}
+			/>
+
+			<form.Text
+				@name='labels.instruments'
+				@label={{t 'sport.form.instrument-plural'}}
+			/>
+		</div>
+		{{/if}}
+
+		{{#if form.model.features.composition}}
+		<div>
+			<form.Text
+				@name='labels.position'
+				@label={{t 'sport.form.position'}}
+				@description={{t 'sport.form.position.description'}}
+			/>
+
+			<form.Text
+				@name='labels.positions'
+				@label={{t 'sport.form.position-plural'}}
+			/>
+		</div>
+
+		<div>
+			<form.Text
+				@name='labels.transition'
+				@label={{t 'sport.form.transition'}}
+				@description={{t 'sport.form.transition.description'}}
+			/>
+
+			<form.Text
+				@name='labels.transitions'
+				@label={{t 'sport.form.transition-plural'}}
+			/>
+		</div>
+		{{/if}}
+	</section>
+
+	<form.ResetButton>Reset</form.ResetButton>
+	<form.SubmitButton>{{t (if form.model.id 'actions.save' 'actions.suggest')}}</form.SubmitButton>
+</ModelForm>

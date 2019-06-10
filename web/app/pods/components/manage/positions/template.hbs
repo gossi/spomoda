@@ -1,0 +1,22 @@
+<h3>{{t 'terms.positions'}}</h3>
+
+<div local-class="select-details">
+	<div>
+		<span local-class="item {{if (and this.selected (not this.selected.id)) 'selected'}}" {{on "click" this.add}}>
+			<FaLight @icon='plus'/> {{t 'manage.new' thing=(t 'terms.position')}}
+		</span>
+		<ul local-class="list">
+			{{#each @positions as |position|}}
+				<li local-class="item {{if (eq position this.selected) 'selected'}}" {{on "click" (fn this.select position)}}>
+					{{position.title}}
+					<span local-class="delete" {{on "click" (fn this.remove position.id)}}><FaLight @icon='trash-alt'/></span>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+	<div>
+		{{#if this.selected}}
+		<Manage::Positions::Form @position={{this.selected}} @task={{this.task}}/>
+		{{/if}}
+	</div>
+</div>

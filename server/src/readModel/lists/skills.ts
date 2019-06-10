@@ -1,18 +1,18 @@
 import { Fields, Projections } from 'wolkenkit/readModel';
 
 export const fields: Fields = {
-	sportId: { initialState: undefined },
+	sportIds: { initialState: [] },
 	title: {initialState: '' },
 	slug: { initialState: '' },
 	description: { initialState: '' },
 	history: { initialState: '' },
+	type: { initialState: undefined },
 	movement: {
 		initialState: {
-			description: '',
-			isDiscrete: false,
-			isRythmic: false,
 			isTranslation: false,
 			isRotation: false,
+			isDiscrete: false,
+			isRhythmic: false,
 			longitudinal: {
 				athlete: false,
 				instrument: false,
@@ -33,16 +33,10 @@ export const fields: Fields = {
 			}
 		}
 	},
-	type: { initialState: '' },
-	relationships: {
+	equipment: {
 		initialState: {
-			multipleOfId: undefined,
-			multiplier: undefined,
-			parentIds: [],
-			childrenIds: [],
-			variationIds: [],
-			generation: 0,
-			importance: 0
+			instrumentId: undefined,
+			apparatusId: undefined
 		}
 	},
 	transitions: {
@@ -51,7 +45,34 @@ export const fields: Fields = {
 			endPositionId: undefined
 		}
 	},
-	instrumentId: { initialState: undefined }
+	relationships: {
+		initialState: {
+			// flags
+			composite: false,
+			multiple: false,
+
+			// generic
+			lineageIds: [],
+			relationIds: [],
+
+			// "parent"
+			childrenIds: [],
+			variationIds: [],
+			partIds: [],
+			multipleIds: [],
+
+			// "children"
+			parentIds: [],
+			variationOfId: undefined,
+			belongsToIds: [],
+			multipleOfId: undefined,
+
+			// relationship attributes
+			generation: 0,
+			importance: 0,
+			multiplier: undefined
+		}
+	}
 };
 
 export const projections: Projections = {

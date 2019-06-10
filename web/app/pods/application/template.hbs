@@ -1,0 +1,31 @@
+<header local-class="appbar">
+	<div local-class="content">
+
+		<div local-class="left">
+			<LinkTo @route="index" local-class="brand">Spomoda</LinkTo>
+			<nav>
+				<LinkTo @route="suggest">Suggest</LinkTo>
+				<LinkTo @route="review">Review</LinkTo>
+			</nav>
+
+			<nav>
+				<LinkTo @route="human">Human</LinkTo>
+				<LinkTo @route="equipment">Equipment</LinkTo>
+			</nav>
+		</div>
+
+		<div local-class="user">
+			{{#if this.session.isAuthenticated}}
+				<span>
+					{{this.session.profile.name}}<br>
+					<small {{on "click" this.logout}}>logout</small>
+				</span>
+				<Avatar @src={{this.session.profile.picture}} local-class="avatar"/>
+			{{else}}
+				<a {{on "click" this.login}}>Login</a>
+			{{/if}}
+		</div>
+	</div>
+</header>
+
+{{outlet}}

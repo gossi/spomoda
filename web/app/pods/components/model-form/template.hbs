@@ -1,0 +1,10 @@
+<Form @model={{@model}} @task={{@task}} ...attributes as |form|>
+	{{yield (hash
+		model=form.model
+		rollback=form.rollback
+		ResetButton=form.ResetButton
+		SubmitButton=form.SubmitButton
+		Text=(component 'model-form/text-group' model=form.model)
+		Textfield=(component 'model-form/textfield-group' model=form.model)
+	)}}
+</Form>

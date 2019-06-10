@@ -13,8 +13,13 @@
 		"classification": "Classification",
 		"movement": "Movement",
 
+		"position": "Position",
+		"positions": "Positions",
 		"start-position": "Start Position",
-		"end-position": "End Position"
+		"end-position": "End Position",
+
+		"instrument": "Instrument",
+		"instruments": "Instruments"
 	},
 
 	"actions": {
@@ -25,9 +30,7 @@
 	},
 
 	"sport": {
-		"manage": {
-			"new": "New {thing}"
-		},
+
 		"form": {
 			"general": "General",
 			"general.description": "Overall information",
@@ -58,6 +61,10 @@
 			"transition.description": "Sport specific label for their transitions",
 			"transition-plural": "Transition Plural"
 		}
+	},
+
+	"manage": {
+		"new": "New {thing}"
 	},
 
 	"instrument.form": {

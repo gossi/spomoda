@@ -1,0 +1,37 @@
+@value content from '../../../styles/layout';
+
+.layout {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.area {
+	display: flex;
+	justify-content: center;
+
+	&-header {
+		composes: area;
+		background-color: #DDD;
+	}
+
+	&-hero {
+		composes: area;
+
+		.area-content {
+			margin-top: 15px;
+			margin-bottom: 15px;
+			background-color: #DDD;
+			border-radius: 5px;
+			padding: 20px;
+		}
+	}
+
+	&-main {
+		composes: area;
+	}
+
+	&-content {
+		composes: content;
+	}
+}

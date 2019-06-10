@@ -10,20 +10,20 @@ export const initialState: InitialState = {
 
 	isAuthorized: {
 		commands: {
-			add: { forAuthenticated: true },
+			create: { forAuthenticated: true },
 			edit: { forAuthenticated: true },
-			remove: { forAuthenticated: true }
+			delete: { forAuthenticated: true }
 		},
 		events: {
-			added: { forPublic: true, forAuthenticated: true },
+			created: { forPublic: true, forAuthenticated: true },
 			edited: { forPublic: true, forAuthenticated: true },
-			removed: { forPublic: true, forAuthenticated: true }
+			deleted: { forPublic: true, forAuthenticated: true }
 		}
 	}
 };
 
 export const commands: Commands = {
-	add: [
+	create: [
 		only.ifCommandValidatedBy({
 			type: 'object',
 			properties: {
@@ -39,7 +39,7 @@ export const commands: Commands = {
 				command.data.slug = slugify(command.data.title, { lower: true });
 			}
 
-			group.events.publish('added', command.data);
+			group.events.publish('created', command.data);
 		}
 	],
 	edit: [
@@ -48,22 +48,22 @@ export const commands: Commands = {
 			group.events.publish('edited', command.data);
 		}
 	],
-	remove: [
+	delete: [
 		only.ifExists(),
 		(group, _command) => {
-			group.events.publish('removed');
+			group.events.publish('deleted');
 		}
 	]
 };
 
 export const events: Events = {
-	added(group, event) {
+	created(group, event) {
 		group.setState(event.data);
 	},
 	edited(group, event) {
 		group.setState(event.data);
 	},
-	removed() {
+	deleted() {
 		// do nothing special here
 	}
 };

@@ -1,0 +1,17 @@
+<Layout as |layout|>
+	<layout.Hero>
+		<h1>Sports</h1>
+	</layout.Hero>
+
+	<layout.Main>
+		<ul>
+			{{#each model as |sport|}}
+				<li><LinkTo @route="sport" @model={{sport.slug}}>{{sport.title}}</LinkTo></li>
+			{{/each}}
+		</ul>
+
+		{{#if (and (eq model.length 0) this.session.isAuthenticated)}}
+			<button {{on "click" this.seed}}>Seed</button>
+		{{/if}}
+	</layout.Main>
+</Layout>

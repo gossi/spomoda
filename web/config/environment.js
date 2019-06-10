@@ -2,12 +2,8 @@
 
 module.exports = function (environment) {
 	const ENV = {
-		'ember-resolver': {
-			features: {
-				EMBER_RESOLVER_MODULE_UNIFICATION: true
-			}
-		},
 		modulePrefix: '@spomoda/web',
+		podModulePrefix: '@spomoda/web/pods',
 		environment,
 		rootURL: '/',
 		locationType: 'auto',
@@ -15,7 +11,6 @@ module.exports = function (environment) {
 			FEATURES: {
 				// Here you can enable experimental features on an ember canary build
 				// e.g. 'with-controller': true
-				EMBER_MODULE_UNIFICATION: true,
 				EMBER_NATIVE_DECORATOR_SUPPORT: true,
 				EMBER_METAL_TRACKED_PROPERTIES: true,
 				EMBER_GLIMMER_FORWARD_MODIFIERS_WITH_SPLATTRIBUTES: true

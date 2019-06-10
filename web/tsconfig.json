@@ -22,22 +22,14 @@
 		"baseUrl": ".",
 		"module": "esnext",
 		"paths": {
-			"@spomoda/web/tests/*": [
-				"tests/*"
-			],
-			"@spomoda/web/src/*": [
-				"src/*"
-			],
-			"ember-wolkenkit": [
-				"node_modules/ember-wolkenkit/*"
-			],
-			"*": [
-				"types/*"
-			],
+			"@spomoda/web/tests/*": ["tests/*"],
+			"@spomoda/web/*": ["app/*"],
+			"ember-wolkenkit/*": ["node_modules/ember-wolkenkit/addon/*"],
+			"*": ["types/*"],
 		}
 	},
 	"include": [
-		"src/**/*",
+		"app/**/*",
 		"tests/**/*",
 		"types/**/*",
 		"node_modules/ember-wolkenkit/*"

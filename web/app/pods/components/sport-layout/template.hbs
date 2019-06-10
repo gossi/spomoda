@@ -1,0 +1,24 @@
+<Layout as |layout|>
+	<layout.Header local-class="header">
+		<LinkTo @route="sport" @model={{@sport.slug}}><h1>{{@sport.title}}</h1></LinkTo>
+
+		<nav local-class="manage">
+			<LinkTo @route="sport.manage">manage</LinkTo>
+			<LinkTo @route="sport.add" class="fa-layers" local-class="add-skill">
+				<FaLight @icon='child'/>
+				<FaSolid @icon='circle' @transform='shrink-7 down-5 right-5'/>
+				<FaLight @icon='plus' @transform='shrink-9 down-5 right-5' local-class="plus"/>
+			</LinkTo>
+		</nav>
+	</layout.Header>
+
+	<layout.Main local-class={{if @nav 'split'}}>
+		<div local-class="main">
+			{{yield}}
+		</div>
+
+		{{#if @nav}}
+		<SportLayout::Nav @sport={{@sport}} local-class="nav"/>
+		{{/if}}
+	</layout.Main>
+</Layout>

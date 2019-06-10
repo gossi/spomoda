@@ -1,12 +1,9 @@
-import { CommandMethodSignature } from 'wolkenkit/writeModel/internals';
+import { CommandMethodSignature } from 'wolkenkit/-internals/writeModel';
 
-declare module 'wolkenkit-command-tools' {
-
-	namespace only {
-		function ifExists(): CommandMethodSignature;
-		function ifNotExists(): CommandMethodSignature;
-		function ifInPhase(phase: string | string[], propertyName?: string): CommandMethodSignature;
-		function ifCommandValidatedBy(schema: any | Function): CommandMethodSignature;
-		function ifStateValidatedBy(schema: any | Function): CommandMethodSignature;
-	}
+export namespace only {
+	function ifExists(): CommandMethodSignature;
+	function ifNotExists(): CommandMethodSignature;
+	function ifInPhase(phase: string | string[], propertyName?: string): CommandMethodSignature;
+	function ifCommandValidatedBy(schema: any | Function): CommandMethodSignature;
+	function ifStateValidatedBy(schema: any | Function): CommandMethodSignature;
 }

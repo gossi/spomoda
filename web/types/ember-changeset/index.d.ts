@@ -53,6 +53,9 @@ declare module 'ember-changeset' {
 		restore(snapshot: Snapshot): Changeset<T>;
 		isValidating(key?: string): boolean;
 
+		set(key: keyof this | keyof T | string, value: any): void;
+		get(key: keyof this | keyof T | string): any;
+
 		// evented
 
 		/**
