@@ -1,8 +1,8 @@
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
-import Changeset from 'ember-changeset';
+import { Changeset } from '@spomoda/web/utils/changeset';
 import IntlService from 'ember-intl/services/intl';
-import { action } from '@ember/object';
 
 interface ModelFormTextfieldGroupArgs {
 	model: Changeset<any>;
@@ -16,13 +16,17 @@ export default class ModelFormTextareaGroupComponent extends Component<ModelForm
 	@service intl!: IntlService;
 
 	get error(): string {
-		if (this.args.model.error[this.args.name]) {
-			return this.intl.t(`errors.${this.args.model.error[this.args.name].validation}`, {
+		if (this.args.model.errored[this.args.name]) {
+			return this.intl.t(`errors.${this.args.model.errored[this.args.name]!.messages[0]}`, {
 				field: this.args.label
 			});
 		}
 
 		return '';
+	}
+
+	get value(): string {
+		return this.args.model[this.args.name];
 	}
 
 	@action

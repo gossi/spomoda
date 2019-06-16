@@ -13,8 +13,8 @@ export default class Sport extends Model {
 
 	approved: boolean = false;
 
-	@tracked labels: Labels = new Labels();
-	@tracked features: Features = new Features();
+	labels: Labels = new Labels();
+	features: Features = new Features();
 
 	@tracked skillIds: string[] = [];
 
@@ -43,13 +43,12 @@ class Features {
 	@tracked instruments: boolean = false;
 	@tracked apparatuses: boolean = false;
 	@tracked composition: boolean = false;
-	@tracked config: FeatureConfig = {
-		instruments: new InstrumentsConfig()
-	}
+
+	config: FeatureConfig = new FeatureConfig();
 }
 
-interface FeatureConfig {
-	instruments: InstrumentsConfig
+class FeatureConfig {
+	instruments: InstrumentsConfig = new InstrumentsConfig();
 }
 
 class InstrumentsConfig {

@@ -41,7 +41,6 @@
 							@change={{fn this.setInstrumentFeature form.model "choice"}}
 						/>
 
-						{{log (changeset-get form.model "features.config.instruments.default")}}
 						<FormGroup @label="Default" as |id|>
 							<PowerSelect
 								@triggerId={{id}}
@@ -79,6 +78,8 @@
 
 	<section local-class="group">
 		<h3 local-class="legend">{{t 'sport.form.language'}}</h3>
+
+		Dirty: {{form.model.isDirty}}
 
 		<div local-class="full">
 			<p>{{t 'sport.form.language.description'}}</p>

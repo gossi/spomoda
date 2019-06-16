@@ -4,9 +4,9 @@ import { Owner } from '@glimmer/di';
 import { tracked } from '@glimmer/tracking';
 import Instrument from '@spomoda/web/models/instrument';
 import Sport from '@spomoda/web/models/sport';
-import Changeset from 'ember-changeset';
 import Task from 'ember-concurrency/task';
 import WolkenkitService from 'ember-wolkenkit/services/wolkenkit';
+import { Changeset } from '@spomoda/web/utils/changeset';
 
 interface SportFormArgs {
 	sport?: Sport;
@@ -50,12 +50,7 @@ export default class SportFormComponent extends Component<SportFormArgs> {
 			value = value === null ? undefined : value;
 			this.setInstrumentFeature(model, 'defaultId', undefined);
 		}
-		model.set('features.config.instruments', {
-			...model.get('features.config.instruments'),
-			[feature]: value
-		});
-
-
+		model.set(`features.config.instruments.${feature}`, value);
 
 		console.log('set feautre', feature, value, model.get('features.config.instruments'));
 	}

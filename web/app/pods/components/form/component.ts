@@ -2,28 +2,27 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { Owner } from '@glimmer/di';
 import { tracked } from '@glimmer/tracking';
-import Changeset from 'ember-changeset';
 import Task from 'ember-concurrency/task';
+import { changeset, Changeset } from '@spomoda/web/utils/changeset';
 
 interface FormArgs {
 	task?: Task;
 	model: any;
 }
 
-export default class FormComponent<T extends object> extends Component<FormArgs> {
-	@tracked model: Changeset<T>;
+export default class FormComponent extends Component<FormArgs> {
+	@tracked model: Changeset<any>;
 
 	constructor(owner: Owner, args: FormArgs) {
 		super(owner, args);
 
-		this.model = new Changeset(this.args.model || {});
+		// this.model = new Changeset(this.args.model || {});
+		this.model = changeset(this.args.model || {});
 	}
 
 	@action
 	update(_element: HTMLFormElement, [model]: [any]) {
-		console.log('form.uopdate()');
-
-		this.model = new Changeset(model);
+		this.model = changeset(model);
 	}
 
 	@action
@@ -45,7 +44,7 @@ export default class FormComponent<T extends object> extends Component<FormArgs>
 			const task = this.args.task.perform(this.model);
 			task.catch((err: any) => {
 				for (let [key, value] of Object.entries(err)) {
-					this.model.addError(key, value as object);
+					this.model.addError(key, value as string);
 				}
 			});
 		}
