@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+
+  /* width: 100%;
+
+  @media medium {
+    width: 768px;
+  }
+
+  @media large {
+    width: 1200px;
+  } */
+}

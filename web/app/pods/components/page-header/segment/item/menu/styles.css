@@ -1,0 +1,17 @@
+@value menu from '../styles';
+
+.menu {
+  composes: menu;
+  position: absolute;
+  top: 60px;
+  min-width: 175px;
+  white-space: nowrap;
+
+  &-left {
+    left: 0;
+  }
+
+  &-right {
+    right: 0;
+  }
+}

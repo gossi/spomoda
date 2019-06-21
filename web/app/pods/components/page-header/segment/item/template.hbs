@@ -1,0 +1,5 @@
+<span local-class="item" tabindex={{if this.hasMenu 0}} ...attributes>
+  {{yield (hash
+    Menu=(component 'page-header/segment/item/menu' item=this)
+  )}}
+</span>

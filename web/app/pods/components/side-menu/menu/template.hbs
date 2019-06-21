@@ -1,0 +1,7 @@
+<AnimatedContainer>
+  {{#animated-if @menu.open use=this.slide duration=(or @duration 200) }}
+    <div local-class="menu" ...attributes>
+      {{yield}}
+    </div>
+  {{/animated-if}}
+</AnimatedContainer>
