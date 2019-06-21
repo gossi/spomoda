@@ -21,8 +21,7 @@
 					@label={{t 'sport.form.features.instruments'}}
 					@description={{t 'sport.form.features.instruments.description'}}
 					@checked={{form.model.features.instruments}}
-					{{!-- @change={{fn this.toggleInstrumentFeature form.model}} --}}
-					@change={{fn (mut form.model.features.instruments)}}
+					@change={{cs form.model "features.instruments"}}
 				/>
 
 				{{#if form.model.features.instruments}}
@@ -30,15 +29,13 @@
 						<instrument.Checkbox
 							@label="required"
 							@checked={{form.model.features.config.instruments.required}}
-							{{!-- @change={{fn this.setInstrumentFeature
-							form.model "required"}} --}}
-							@change={{fn (mut form.model.features.config.instruments.required)}}
+							@change={{cs form.model "features.config.instruments.required"}}
 						/>
 
 						<instrument.Checkbox
 							@label="choice"
 							@checked={{form.model.features.instruments.choice}}
-							@change={{fn this.setInstrumentFeature form.model "choice"}}
+							@change={{cs form.model "features.instruments.choice"}}
 						/>
 
 						<FormGroup @label="Default" as |id|>
@@ -47,11 +44,8 @@
 								@allowClear={{true}}
 								@searchField="title"
 								@options={{this.instruments}}
-								{{!--
 								@selected={{form.model.features.config.instruments.default}}
-								--}}
-								@selected={{changeset-get form.model "features.config.instruments.default"}}
-								@onchange={{fn this.setInstrumentFeature form.model "default"}}
+								@onchange={{cs form.model "features.config.instruments.default"}}
 							as |instrument|>
 								{{instrument.title}}
 							</PowerSelect>

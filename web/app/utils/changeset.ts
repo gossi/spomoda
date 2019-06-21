@@ -3,6 +3,8 @@
 
 import { notifyPropertyChange } from '@ember/object';
 
+export const UP = Symbol('up');
+
 interface CacheValue<T> {
 	key: string;
 
@@ -107,7 +109,13 @@ class BufferedProxy<T extends object, K extends keyof T> {
 		}
 
 		if (notify) {
-			notifyPropertyChange(this.target, key as string);
+			const target = this.getTarget(key);
+			if ((key as string).includes('.')) {
+				key = (key as string).split('.').pop() as K;
+			}
+			console.log('notify change:', target, key);
+
+			notifyPropertyChange(target, key as string);
 
 			if (pristine !== this.isPristine) {
 				notifyPropertyChange(this, 'changes');
@@ -142,6 +150,21 @@ class BufferedProxy<T extends object, K extends keyof T> {
 		}
 
 		return this.target[key];
+	}
+
+	private getTarget(key: K) {
+		if ((key as string).includes('.')) {
+			const parts = (key as string).split('.');
+			const next = parts.shift();
+			let sub = this.get(next as K);
+
+			if (parts.length > 1) {
+				sub = sub.getTarget(parts.join('.'));
+			}
+			return sub;
+		}
+
+		return this.target;
 	}
 
 	rollback() {
