@@ -1,0 +1,21 @@
+<Link @route={{@route}} as |l|>
+  {{#if (has-block-params)}}
+    {{yield (hash
+      href=l.href
+      isActive=l.isActive
+      isActiveWithoutQueryParams=l.isActiveWithoutQueryParams
+      isActiveWithoutModels=l.isActiveWithoutModels
+      transitionTo=(fn this.transition l.transitionTo)
+      replaceWith=(fn this.replace l.replaceWith)
+    )}}
+  {{else}}
+    <a
+      href={{l.href}}
+      class={{if l.isActive "is-active"}}
+      {{on "click" (fn this.transition l.transitionTo)}}
+      ...attributes
+    >
+      {{yield}}
+    </a>
+  {{/if}}
+</Link>

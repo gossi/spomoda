@@ -1,0 +1,10 @@
+<span
+  local-class="item"
+  tabindex={{if this.hasMenu 0}}
+  ...attributes
+  {{on "mouseleave" this.restorePointerEvents}}
+>
+  {{yield (hash
+    Menu=(component 'header-builder/segment/item/menu' item=this)
+  )}}
+</span>

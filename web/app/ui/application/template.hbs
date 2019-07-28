@@ -1,0 +1,36 @@
+<HeaderBuilder local-class="appbar" as |hb|>
+	<nav local-class="content">
+		<LinkTo @route="index" local-class="brand">Spomoda</LinkTo>
+
+		<hb.Segment local-class="main">
+			<hb.Link @route="suggest">Suggest</hb.Link>
+			<hb.Link @route="review">Review</hb.Link>
+
+			<hb.Link @route="human">Human</hb.Link>
+			<hb.Link @route="equipment">Equipment</hb.Link>
+		</hb.Segment>
+
+		<hb.Segment local-class="user" as |s|>
+			{{#if this.session.isAuthenticated}}
+				<s.Item as |i|>
+					{{this.session.profile.name}}
+					<Avatar @src={{this.session.profile.picture}} local-class="avatar"/>
+
+					<i.Menu @position="right" local-class="user-menu">
+						<div local-class="user-menu-list">
+							<hb.Link @route="suggest">Suggest</hb.Link>
+							<hb.Link @route="review">Review</hb.Link>
+							<hr>
+							<small {{on "click" this.logout}}>logout</small>
+						</div>
+					</i.Menu>
+				</s.Item>
+
+			{{else}}
+				<a {{on "click" this.login}}>Login</a>
+			{{/if}}
+		</hb.Segment>
+	</nav>
+</HeaderBuilder>
+
+{{outlet}}

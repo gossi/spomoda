@@ -3,7 +3,7 @@
 module.exports = function (environment) {
 	const ENV = {
 		modulePrefix: '@spomoda/web',
-		podModulePrefix: '@spomoda/web/pods',
+		podModulePrefix: '@spomoda/web/ui',
 		environment,
 		rootURL: '/',
 		locationType: 'auto',

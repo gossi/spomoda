@@ -1,0 +1,18 @@
+@value menu from '../styles';
+
+.menu {
+  composes: menu;
+  position: absolute;
+  overflow-y: auto;
+  white-space: nowrap;
+  margin-top: -1px;
+  padding-top: 1px;
+
+  &-left {
+    left: 0;
+  }
+
+  &-right {
+    right: 0;
+  }
+}
